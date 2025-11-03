@@ -60,6 +60,26 @@
 
     /* ضمان الأرقام بالإنجليزية */
     .latin-nums { font-variant-numeric: tabular-nums; }
+
+    .nav-pill {
+      background-color: rgba(243, 244, 246, 0.8);
+      color: #374151;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+    }
+    .nav-pill:hover { background-color: rgba(229, 231, 235, 1); }
+    .nav-pill.active-nav {
+      background-color: #1079e6;
+      color: white;
+      box-shadow: 0 10px 15px -3px rgba(16, 121, 230, 0.3);
+    }
+
+    .nav-icon {
+      color: #9ca3af;
+      transition: color 0.2s ease;
+    }
+    .nav-icon.active-nav { color: #1079e6; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900 rtl latin-nums">
@@ -67,26 +87,37 @@
   <!-- Navigation -->
   <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
     <div class="container mx-auto px-4 py-3">
-      <div class="flex justify-between items-center">
-<div class="flex items-center space-x-4 space-x-reverse">
-  <h1 class="text-2xl font-bold">
-    <a href="/" class="text-blue-600">رواتب المعلمين</a>
-  </h1>
-</div>
-        <div class="flex items-center space-x-3 space-x-reverse">
-          <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="الوضع الداكن">
-            <i class="fas fa-moon text-gray-600"></i>
-          </button>
-          <button id="shareBtn" class="p-2 rounded-lg hover:bg-gray-100 transition-colors" style="display:none;" aria-label="مشاركة">
-            <i class="fas fa-share-alt text-gray-600"></i>
-          </button>
+      <div class="flex flex-col gap-3">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-4 space-x-reverse">
+            <h1 class="text-2xl font-bold">
+              <a href="/" class="text-blue-600">رواتب المعلمين</a>
+            </h1>
+          </div>
+          <div class="flex items-center space-x-3 space-x-reverse">
+            <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="الوضع الداكن">
+              <i class="fas fa-moon text-gray-600"></i>
+            </button>
+            <button id="shareBtn" class="p-2 rounded-lg hover:bg-gray-100 transition-colors" style="display:none;" aria-label="مشاركة">
+              <i class="fas fa-share-alt text-gray-600"></i>
+            </button>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button class="nav-pill" data-nav-target="calculator">حاسبة الرواتب</button>
+          <button class="nav-pill" data-nav-target="faq">الرئيسية والأسئلة</button>
+          <button class="nav-pill" data-nav-target="about">من نحن</button>
+          <button class="nav-pill" data-nav-target="privacy">سياسة الخصوصية</button>
+          <button class="nav-pill" data-nav-target="shipping">سياسة الشحن والتوصيل</button>
+          <button class="nav-pill" data-nav-target="returns">سياسة الاستبدال والإرجاع</button>
+          <button class="nav-pill" data-nav-target="terms">الشروط والأحكام</button>
         </div>
       </div>
     </div>
   </nav>
 
   <!-- Landing Page -->
-<section id="landingPage" class="min-h-screen">
+<section id="landingPage" class="min-h-screen" style="display:none;">
   <div class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
     <div class="container mx-auto px-4 text-center">
       <h1 class="text-4xl md:text-6xl font-bold mb-6">
@@ -369,6 +400,142 @@
   </div>
 </section>
 
+  <!-- About Us -->
+  <section id="aboutPage" class="py-16" style="display:none;">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-md p-8 space-y-6">
+        <h2 class="text-3xl font-bold text-center text-blue-700">من نحن</h2>
+        <p class="text-gray-700 leading-relaxed">
+          "رواتب المعلمين" هو مشروع رقمي مستقل يهدف إلى توفير معلومات محدثة وموثوقة عن سلم رواتب الوظائف التعليمية في المملكة العربية السعودية.
+          نعمل على تبسيط البيانات الرسمية وتحويلها إلى أدوات عملية تساعد المعلمين والمعلمات على فهم رواتبهم واستحقاقاتهم بكل وضوح وشفافية.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          رؤيتنا هي أن يكون الموقع المرجع الأول لكل معلم ومعلمة يبحثون عن تفاصيل دقيقة حول الرواتب والبدلات والعلاوات، مع توفير حاسبة تفاعلية سهلة الاستخدام تدعم التخطيط المالي الشخصي.
+        </p>
+        <div class="bg-blue-50 border border-blue-100 rounded-xl p-6">
+          <h3 class="text-xl font-semibold text-blue-800 mb-3">قيمنا</h3>
+          <ul class="list-disc pr-6 space-y-2 text-gray-700">
+            <li>الشفافية في عرض البيانات والأرقام الرسمية.</li>
+            <li>تحديث المحتوى بشكل دوري ليتوافق مع أحدث القرارات والتعاميم.</li>
+            <li>تقديم تجربة استخدام بسيطة وواضحة تدعم اللغة العربية بشكل كامل.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy Policy -->
+  <section id="privacyPage" class="py-16 bg-gray-50" style="display:none;">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-md p-8 space-y-6">
+        <h2 class="text-3xl font-bold text-center text-blue-700">سياسة الخصوصية</h2>
+        <p class="text-gray-700 leading-relaxed">
+          نحرص في "رواتب المعلمين" على حماية بيانات زوارنا بشكل كامل، ولا نقوم بجمع أي معلومات شخصية إلا في الحالات الضرورية لتطوير الخدمة أو لتحسين تجربة الاستخدام.
+        </p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 rounded-xl p-5">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">ما الذي نجمعه؟</h3>
+            <p class="text-gray-700">
+              يتم جمع بيانات استخدام عامة وغير محددة الهوية، مثل عدد الزيارات والصفحات الأكثر مشاهدة، وذلك عبر أدوات تحليلية موثوقة تساعدنا على تحسين المحتوى.
+            </p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-5">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">كيف نحمي بياناتك؟</h3>
+            <p class="text-gray-700">
+              نلتزم باستخدام بروتوكولات أمان محدثة، ولا نشارك أي بيانات مع جهات خارجية، كما نتيح لك التواصل معنا لحذف أي بيانات مرتبطة بك في حال تم جمعها بتقديمك لها طوعاً.
+            </p>
+          </div>
+        </div>
+        <p class="text-gray-700 leading-relaxed">
+          استخدامك للموقع يعني موافقتك على سياسة الخصوصية هذه. سنقوم بنشر أي تحديثات جوهرية هنا مع تحديد تاريخ آخر تحديث.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shipping Policy -->
+  <section id="shippingPage" class="py-16" style="display:none;">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-md p-8 space-y-6">
+        <h2 class="text-3xl font-bold text-center text-blue-700">سياسة الشحن والتوصيل</h2>
+        <p class="text-gray-700 leading-relaxed">
+          في حال تقديم منتجات أو اشتراكات مدفوعة عبر "رواتب المعلمين"، نعتمد سياسات شحن واضحة لضمان تجربة موثوقة لجميع العملاء.
+        </p>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-blue-50 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-blue-800 mb-2">مدة التوصيل</h3>
+            <p class="text-gray-700">يتم تجهيز الطلبات خلال 1-3 أيام عمل، وتستغرق مدة التوصيل من 3 إلى 7 أيام عمل داخل المملكة.</p>
+          </div>
+          <div class="bg-blue-50 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-blue-800 mb-2">شركات الشحن</h3>
+            <p class="text-gray-700">نتعاون مع شركات شحن معتمدة داخل السعودية لضمان سرعة التسليم وإمكانية تتبع الشحنات.</p>
+          </div>
+          <div class="bg-blue-50 rounded-xl p-5">
+            <h3 class="text-lg font-semibold text-blue-800 mb-2">التكاليف</h3>
+            <p class="text-gray-700">تُحدد رسوم الشحن حسب وزن المنتج والمنطقة، ويتم توضيح التكلفة النهائية قبل إتمام عملية الدفع.</p>
+          </div>
+        </div>
+        <p class="text-gray-700 leading-relaxed">
+          سيتم إخطار العملاء عبر البريد الإلكتروني أو الرسائل النصية بأية تأخيرات غير متوقعة، مع توفير خيار إلغاء الطلب واسترداد المبلغ بالكامل عند الحاجة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Return & Exchange Policy -->
+  <section id="returnsPage" class="py-16 bg-gray-50" style="display:none;">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-md p-8 space-y-6">
+        <h2 class="text-3xl font-bold text-center text-blue-700">سياسة الاستبدال والإرجاع</h2>
+        <p class="text-gray-700 leading-relaxed">
+          نسعى لرضا عملائنا بالكامل، ولذلك نتيح إمكانية استبدال أو إرجاع المنتجات الرقمية أو الملموسة وفق الشروط التالية:
+        </p>
+        <ul class="list-disc pr-6 space-y-2 text-gray-700">
+          <li>يجب إرسال طلب الاستبدال أو الإرجاع خلال 7 أيام من تاريخ الاستلام مرفقاً برقم الطلب.</li>
+          <li>يشترط أن تكون المنتجات المادية غير مستخدمة وبحالتها الأصلية مع جميع الملحقات.</li>
+          <li>بالنسبة للمنتجات الرقمية، يتم دراسة كل حالة على حدة للتأكد من عدم استخدام الخدمة بشكل كامل.</li>
+          <li>يتم التواصل معنا عبر البريد الإلكتروني الموضح في صفحة الاتصال لإتمام الإجراءات.</li>
+        </ul>
+        <p class="text-gray-700 leading-relaxed">
+          في حال قبول الطلب، يتم استرداد المبلغ خلال 5-10 أيام عمل إلى وسيلة الدفع الأصلية، أو توفير رصيد شراء بديل حسب اختيار العميل.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terms & Conditions -->
+  <section id="termsPage" class="py-16" style="display:none;">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-md p-8 space-y-6">
+        <h2 class="text-3xl font-bold text-center text-blue-700">الشروط والأحكام</h2>
+        <p class="text-gray-700 leading-relaxed">
+          باستخدامك لموقع "رواتب المعلمين" فإنك توافق على الالتزام بالشروط والأحكام التالية. يرجى قراءتها بعناية قبل استخدام الخدمات أو إجراء أي عملية شراء.
+        </p>
+        <div class="space-y-4 text-gray-700">
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">استخدام الموقع</h3>
+            <p>يُسمح باستخدام المحتوى والخدمات لأغراض شخصية وتعليمية فقط، ويحظر إعادة نشر البيانات أو استخدامها تجارياً دون إذن خطي مسبق.</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">الملكية الفكرية</h3>
+            <p>جميع النصوص والتصاميم والأدوات التفاعلية مملوكة للموقع أو للجهات المرخصة، وأي انتهاك قد يعرضك للمساءلة القانونية.</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">الدفع والاشتراكات</h3>
+            <p>في حال توفير خدمات مدفوعة، يتم معالجة المدفوعات عبر بوابات آمنة، ويُشترط الالتزام بسياسات الإلغاء والاسترداد المعلنة.</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">المسؤوليات وحدود الضمان</h3>
+            <p>نحرص على دقة المعلومات، إلا أن الموقع غير مسؤول عن أي قرارات مالية تعتمد بشكل كامل على النتائج المعروضة في الحاسبة، ويُنصح دائماً بالرجوع إلى الجهات الرسمية.</p>
+          </div>
+        </div>
+        <p class="text-gray-700 leading-relaxed">
+          نحتفظ بحق تعديل هذه الشروط في أي وقت، وسيتم إشعار المستخدمين بأي تغييرات جوهرية عبر تحديث تاريخ النشر في هذه الصفحة.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Sticky Net Salary Bar -->
   <div id="stickyBar" class="sticky-bar bg-green-600 text-white p-4 shadow-lg">
     <div class="container mx-auto flex justify-between items-center">
@@ -384,17 +551,17 @@
 
   <!-- Bottom Navigation -->
   <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2 flex justify-around z-50">
-    <button id="navLanding" class="flex flex-col items-center p-2 text-blue-600">
+    <button class="flex flex-col items-center p-2 nav-icon" data-nav-target="faq" aria-label="الرئيسية">
       <i class="fas fa-home text-xl mb-1"></i>
       <span class="text-xs">الرئيسية</span>
     </button>
-    <button id="navCalculator" class="flex flex-col items-center p-2 text-gray-400">
+    <button class="flex flex-col items-center p-2 nav-icon" data-nav-target="calculator" aria-label="حاسبة الرواتب">
       <i class="fas fa-calculator text-xl mb-1"></i>
       <span class="text-xs">الحاسبة</span>
     </button>
-    <button id="navFAQ" class="flex flex-col items-center p-2 text-gray-400">
-      <i class="fas fa-question-circle text-xl mb-1"></i>
-      <span class="text-xs">الأسئلة</span>
+    <button class="flex flex-col items-center p-2 nav-icon" data-nav-target="about" aria-label="من نحن">
+      <i class="fas fa-info-circle text-xl mb-1"></i>
+      <span class="text-xs">من نحن</span>
     </button>
   </div>
 
@@ -452,26 +619,40 @@
     }
 
     // -------- Navigation --------
-    let currentPage = 'landing';
-    function showPage(page) {
-      document.getElementById('landingPage').style.display = page === 'landing' ? 'block' : 'none';
-      document.getElementById('calculatorPage').style.display = page === 'calculator' ? 'block' : 'none';
-      document.getElementById('faqPage').style.display = page === 'faq' ? 'block' : 'none';
+    const pageMap = {
+      "landing": "landingPage",
+      "calculator": "calculatorPage",
+      "faq": "faqPage",
+      "about": "aboutPage",
+      "privacy": "privacyPage",
+      "shipping": "shippingPage",
+      "returns": "returnsPage",
+      "terms": "termsPage"
+    };
 
-      document.querySelectorAll('[id^="nav"]').forEach(btn => {
-        btn.classList.remove('text-blue-600'); btn.classList.add('text-gray-400');
+    let currentPage = 'calculator';
+    function showPage(page) {
+      const targetKey = pageMap[page] ? page : 'calculator';
+
+      Object.entries(pageMap).forEach(([key, sectionId]) => {
+        const section = document.getElementById(sectionId);
+        if (!section) return;
+        section.style.display = key === targetKey ? 'block' : 'none';
       });
-      if (page === 'landing') {
-        document.getElementById('navLanding').classList.remove('text-gray-400');
-        document.getElementById('navLanding').classList.add('text-blue-600');
-      } else if (page === 'calculator') {
-        document.getElementById('navCalculator').classList.remove('text-gray-400');
-        document.getElementById('navCalculator').classList.add('text-blue-600');
-      } else {
-        document.getElementById('navFAQ').classList.remove('text-gray-400');
-        document.getElementById('navFAQ').classList.add('text-blue-600');
+
+      document.querySelectorAll('[data-nav-target]').forEach(btn => {
+        const isActive = btn.dataset.navTarget === targetKey;
+        btn.classList.toggle('active-nav', isActive);
+        btn.setAttribute('aria-current', isActive ? 'page' : 'false');
+      });
+
+      if (targetKey !== 'calculator') {
+        const stickyBar = document.getElementById('stickyBar');
+        if (stickyBar) stickyBar.classList.remove('show');
       }
-      currentPage = page;
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      currentPage = targetKey;
     }
 
     // -------- Data --------
@@ -852,19 +1033,28 @@ ${url}`;
       initializeDarkMode();
       initializeTracks();
       initializeFAQ();
+      showPage('calculator');
       loadFromURL();
 
       // Events
-      document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
-      document.getElementById('startCalculatorBtn').addEventListener('click', () => showPage('calculator'));
-      document.getElementById('shareResult').addEventListener('click', shareResult);
-      document.getElementById('whatsappShare').addEventListener('click', shareWhatsApp);
-      document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      const darkToggle = document.getElementById('darkModeToggle');
+      if (darkToggle) darkToggle.addEventListener('click', toggleDarkMode);
 
-      // Bottom nav
-      document.getElementById('navLanding').addEventListener('click', () => showPage('landing'));
-      document.getElementById('navCalculator').addEventListener('click', () => showPage('calculator'));
-      document.getElementById('navFAQ').addEventListener('click', () => showPage('faq'));
+      const startCalculatorBtn = document.getElementById('startCalculatorBtn');
+      if (startCalculatorBtn) startCalculatorBtn.addEventListener('click', () => showPage('calculator'));
+
+      const shareResultBtn = document.getElementById('shareResult');
+      if (shareResultBtn) shareResultBtn.addEventListener('click', shareResult);
+
+      const whatsappShareBtn = document.getElementById('whatsappShare');
+      if (whatsappShareBtn) whatsappShareBtn.addEventListener('click', shareWhatsApp);
+
+      const backToTopBtn = document.getElementById('backToTop');
+      if (backToTopBtn) backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      document.querySelectorAll('[data-nav-target]').forEach(btn => {
+        btn.addEventListener('click', () => showPage(btn.dataset.navTarget));
+      });
 
       // Sticky bar on scroll
       window.addEventListener('scroll', () => {
