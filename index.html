@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="O9Y34Bg1J6Ln4vp/slf7BA" async></script>
+<link rel="icon" type="image/png" href="https://static.tumblr.com/8cspwwp/K7Kt02vwg/favicon-32x32.png">
+<meta name="google-site-verification" content="EmuAssYNVYuwRrRGphfjXl25VHWLfb8umw5jILnWcWs" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>رواتب المعلمين في السعودية - سلم المعلمين الجديد وحاسبة الراتب</title>
+
+<!-- Meta -->
+<meta name="description" content="اكتشف تفاصيل رواتب المعلمين في السعودية حسب سلم المعلمين الجديد. استخدم حاسبة الرواتب لمعرفة الراتب الأساسي، العلاوة، بدل النقل، والاستقطاع، بدقة وسهولة." />
+<meta name="keywords" content="رواتب المعلمين, سلم المعلمين الجديد, رواتب المعلمين في السعودية, حاسبة رواتب المعلمين, سلم الرواتب التعليمي, الراتب الصافي للمعلمين" />
+<meta property="og:title" content="رواتب المعلمين في السعودية - سلم المعلمين الجديد وحاسبة الراتب" />
+<meta property="og:description" content="حاسبة تفاعلية لحساب رواتب المعلمين في السعودية وفقاً لسلم المعلمين الجديد، تشمل العلاوات وبدلات النقل والاستقطاع بدقة ووضوح." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#1079e6" />
+
+  <!-- TailwindCSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
+  <!-- Arabic font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    * { font-family: 'Noto Sans Arabic', sans-serif; }
+    .rtl { direction: rtl; text-align: right; }
+    .dark { --tw-bg-opacity: 1; background-color: rgb(17 24 39 / var(--tw-bg-opacity)); color: white; }
+    .dark .bg-white { background-color: rgb(31 41 55); }
+    .dark .bg-gray-50 { background-color: rgb(17 24 39); }
+    .dark .bg-gray-100 { background-color: rgb(31 41 55); }
+    .dark .text-gray-900 { color: rgb(243 244 246); }
+    .dark .text-gray-600 { color: rgb(156 163 175); }
+    .dark .text-gray-800 { color: rgb(209 213 219); }
+    .dark .border-gray-200 { border-color: rgb(75 85 99); }
+    .dark .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); }
+
+    .slide-in { animation: slideIn 0.3s ease-out; }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .count-up { animation: countUp 1s ease-out; }
+    @keyframes countUp { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+
+    .sticky-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; transform: translateY(100%); transition: transform 0.3s ease; }
+    .sticky-bar.show { transform: translateY(0); }
+
+    .track-chip { transition: all 0.2s ease; }
+    .track-chip.active { background-color: #1079e6; color: white; }
+    .track-chip.active .text-gray-500 { color: white;}
+
+    .level-btn { transition: all 0.2s ease; }
+    .level-btn.active { background-color: #1079e6; color: white; transform: scale(1.1); }
+    .level-btn.active .text-gray-500 { color: white; }
+
+    .grade-btn { transition: all 0.2s ease; }
+    .grade-btn.active { background-color: #10b981; color: white; }
+    .grade-btn.active .text-gray-500 { color: white; }
+
+    /* ضمان الأرقام بالإنجليزية */
+    .latin-nums { font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 rtl latin-nums">
+
+  <!-- Navigation -->
+  <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+<div class="flex items-center space-x-4 space-x-reverse">
+  <h1 class="text-2xl font-bold">
+    <a href="/" class="text-blue-600">رواتب المعلمين</a>
+  </h1>
+</div>
+        <div class="flex items-center space-x-3 space-x-reverse">
+          <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="الوضع الداكن">
+            <i class="fas fa-moon text-gray-600"></i>
+          </button>
+          <button id="shareBtn" class="p-2 rounded-lg hover:bg-gray-100 transition-colors" style="display:none;" aria-label="مشاركة">
+            <i class="fas fa-share-alt text-gray-600"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Landing Page -->
+<section id="landingPage" class="min-h-screen">
+  <div class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6">
+        حاسبة رواتب المعلمين في السعودية
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 opacity-90">
+        احسب راتبك بدقة وفقًا لأحدث لوائح وزارة التعليم وسلّم رواتب المعلمين الجديد المعتمد في السعودية.
+      </p>
+      <button id="startCalculatorBtn" class="bg-white text-blue-600 px-8 py-4 rounded-lg text-xl font-semibold hover:bg-gray-100 transition-colors">
+        ابدأ بحساب راتبك
+        <i class="fas fa-arrow-left mr-2"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- SEO/Info Section -->
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-8 text-center">
+        سلم رواتب المعلمين الجديد في السعودية: دليلك الشامل
+      </h2>
+      <div class="prose prose-lg max-w-none">
+        <h3 class="text-2xl font-semibold mb-4">ما هو سلم رواتب المعلمين الجديد؟</h3>
+        <p class="mb-6">
+          سلم رواتب المعلمين الجديد هو النظام الرسمي المعتمد من وزارة التعليم السعودية، ويهدف إلى تنظيم رواتب المعلمين والمعلمات في مختلف المستويات والدرجات الوظيفية. يعتمد السلم على تقسيم المعلمين إلى مسارات مهنية واضحة ويراعي المؤهل العلمي وسنوات الخبرة والأداء الوظيفي، لضمان العدالة والتحفيز في بيئة العمل التعليمية.
+        </p>
+
+        <h3 class="text-2xl font-semibold mb-4">تصنيفات المعلمين في السلم الجديد</h3>
+        <p class="mb-4">
+          يشمل السلم الجديد أربعة تصنيفات رئيسية للمعلمين في السعودية:
+        </p>
+        <ul class="list-disc pr-6 mb-6">
+          <li><strong>مساعد معلم / معلم:</strong> الفئة المخصصة للمعلمين الجدد وأصحاب الخبرة الأقل.</li>
+          <li><strong>معلم ممارس:</strong> لمن يمتلك خبرة متوسطة واجتاز متطلبات الترقية.</li>
+          <li><strong>معلم متقدم:</strong> لأصحاب الخبرات العالية والمؤهلات المتميزة.</li>
+          <li><strong>معلم خبير:</strong> أعلى درجة مهنية يحصل عليها المعلم بناءً على التميز في الأداء والمؤهلات.</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold mb-4">مكونات الراتب الشهري للمعلمين</h3>
+        <p class="mb-4">
+          يضم الراتب الشهري للمعلمين عدة عناصر أساسية تم تحديدها في سلم المعلمين الجديد:
+        </p>
+        <ul class="list-disc pr-6 mb-6">
+          <li><strong>الراتب الأساسي:</strong> وهو مبلغ ثابت حسب المسار الوظيفي والمستوى والدرجة.</li>
+          <li><strong>بدل النقل:</strong> بدل شهري لدعم تكاليف الانتقال، يختلف باختلاف الفئة.</li>
+          <li><strong>استقطاع التقاعد:</strong> اقتطاع شهري نسبته 9% من الراتب الأساسي لصالح المؤسسة العامة للتأمينات الاجتماعية.</li>
+          <li><strong>العلاوة السنوية:</strong> تضاف للراتب الأساسي سنويًا وتختلف حسب تصنيف المعلم.</li>
+          <li><strong>الراتب الصافي:</strong> الناتج النهائي بعد احتساب جميع البدلات والاستقطاعات.</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold mb-4">جدول العلاوة السنوية في سلم المعلمين الجديد</h3>
+        <p class="mb-6">
+          يختلف مقدار العلاوة السنوية للمعلمين في السعودية حسب التصنيف:
+          <ul class="list-disc pr-6 mb-6">
+            <li>مساعد معلم / معلم: تبدأ من 300 ريال سنويًا.</li>
+            <li>معلم ممارس: تصل حتى 540 ريال سنويًا.</li>
+            <li>معلم متقدم: تتراوح بين 540 و580 ريال سنويًا.</li>
+            <li>معلم خبير: تصل إلى 640 ريال سنويًا.</li>
+          </ul>
+          ويُضاف مبلغ العلاوة مباشرة للراتب الأساسي سنويًا بحسب آلية الترقيات والأداء.
+        </p>
+
+        <h3 class="text-2xl font-semibold mb-4">طريقة استخدام حاسبة رواتب المعلمين</h3>
+        <ol class="list-decimal pr-6 mb-6">
+          <li>اختر مسارك الوظيفي وفق سلم المعلمين الجديد.</li>
+          <li>حدد المستوى الحالي (من 1 إلى 6 حسب التصنيف).</li>
+          <li>اختر الدرجة في المستوى المحدد.</li>
+          <li>ستظهر تفاصيل الراتب بالكامل بشكل فوري، شاملاً العلاوة وبدل النقل والاستقطاع.</li>
+          <li>يمكنك مشاركة نتيجتك أو حفظها للرجوع لاحقًا.</li>
+        </ol>
+
+        <h3 class="text-2xl font-semibold mb-4">أهمية معرفة رواتب المعلمين والتخطيط المالي</h3>
+        <p class="mb-6">
+          تُمكّن معرفة تفاصيل رواتب المعلمين في السعودية المعلمين من إدارة مصاريفهم والتخطيط المالي السليم، كما تساعدهم على اتخاذ قرارات مهنية أفضل من حيث الترقية أو تطوير الذات، وتحفزهم للمنافسة والترقي في السلم الجديد.
+        </p>
+
+        <h3 class="text-2xl font-semibold mb-4">مصادر رسمية ومراجع</h3>
+        <p class="mb-6">
+          كافة المعلومات الواردة في هذه الصفحة مبنية على المصادر الرسمية لموقع وزارة التعليم السعودية (<a href="https://www.moe.gov.sa" class="text-blue-600 underline" target="_blank">moe.gov.sa</a>) ومنشورات الموارد البشرية الحكومية المعتمدة لعام 2024. لمزيد من التفاصيل، يمكنك دائمًا مراجعة اللوائح الرسمية أو التواصل مع وزارة التعليم مباشرة.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Calculator -->
+  <section id="calculatorPage" class="min-h-screen py-8" style="display:none;">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold mb-4">حاسبة الراتب التفاعلية</h2>
+        <p class="text-gray-600">اختر المسار والمستوى والدرجة لمعرفة تفاصيل راتبك</p>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold ml-3">1</div>
+          <h3 class="text-xl font-semibold">اختر المسار الوظيفي</h3>
+          <button class="mr-2 text-gray-400 hover:text-gray-600" data-tooltip="اختر المسار الوظيفي المناسب لمؤهلاتك وخبرتك">
+            <i class="fas fa-question-circle"></i>
+          </button>
+        </div>
+        <div id="trackSelector" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+      </div>
+
+      <!-- Step 2 -->
+      <div id="levelSection" class="bg-white rounded-lg shadow-lg p-6 mb-6" style="display:none;">
+        <div class="flex items-center mb-4">
+          <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold ml-3">2</div>
+          <h3 class="text-xl font-semibold">اختر المستوى</h3>
+          <button class="mr-2 text-gray-400 hover:text-gray-600" data-tooltip="المستوى يحدد حسب سنوات الخبرة والمؤهلات">
+            <i class="fas fa-question-circle"></i>
+          </button>
+        </div>
+        <div id="levelSelector" class="grid grid-cols-3 md:grid-cols-6 gap-3"></div>
+      </div>
+
+      <!-- Step 3 -->
+      <div id="gradeSection" class="bg-white rounded-lg shadow-lg p-6 mb-6" style="display:none;">
+        <div class="flex items-center mb-4">
+          <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold ml-3">3</div>
+          <h3 class="text-xl font-semibold">اختر الدرجة</h3>
+          <button class="mr-2 text-gray-400 hover:text-gray-600" data-tooltip="الدرجة تحدد موقعك ضمن المستوى الحالي">
+            <i class="fas fa-question-circle"></i>
+          </button>
+        </div>
+        <div id="gradeSelector" class="grid grid-cols-3 md:grid-cols-6 gap-3"></div>
+      </div>
+
+      <!-- Results -->
+      <div id="resultsCard" class="bg-white rounded-lg shadow-lg p-6 mb-6" style="display:none;">
+        <h3 class="text-2xl font-bold mb-6 text-center">تفاصيل راتبك الشهري</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-blue-50 rounded-lg p-4">
+            <div class="flex items-center justify-between">
+              <span class="text-gray-600">الراتب الأساسي</span>
+              <button class="text-gray-400 hover:text-gray-600" data-tooltip="المبلغ الثابت حسب مستواك ودرجتك">
+                <i class="fas fa-question-circle"></i>
+              </button>
+            </div>
+            <div id="basicSalary" class="text-2xl font-bold text-blue-600 count-up">0 ريال</div>
+          </div>
+          <div class="bg-green-50 rounded-lg p-4">
+            <div class="flex items-center justify-between">
+              <span class="text-gray-600">بدل النقل</span>
+              <button class="text-gray-400 hover:text-gray-600" data-tooltip="بدل شهري ثابت للمساعدة في تكاليف التنقل">
+                <i class="fas fa-question-circle"></i>
+              </button>
+            </div>
+            <div id="transportAllowance" class="text-2xl font-bold text-green-600 count-up">0 ريال</div>
+          </div>
+          <div class="bg-red-50 rounded-lg p-4">
+            <div class="flex items-center justify-between">
+              <span class="text-gray-600">استقطاع التقاعد</span>
+              <button class="text-gray-400 hover:text-gray-600" data-tooltip="نسبة محددة تُخصم للتأمينات الاجتماعية">
+                <i class="fas fa-question-circle"></i>
+              </button>
+            </div>
+            <div id="retirementDeduction" class="text-2xl font-bold text-red-600 count-up">-0 ريال</div>
+          </div>
+          <div class="bg-yellow-50 rounded-lg p-4">
+            <div class="flex items-center justify-between">
+              <span class="text-gray-600">العلاوة السنوية</span>
+              <button class="text-gray-400 hover:text-gray-600" data-tooltip="المبلغ الذي يُضاف لراتبك الأساسي سنوياً">
+                <i class="fas fa-question-circle"></i>
+              </button>
+            </div>
+            <div id="annualRaise" class="text-2xl font-bold text-yellow-600 count-up">0 ريال</div>
+          </div>
+        </div>
+        <div class="mt-6 bg-gradient-to-r from-green-500 to-green-600 rounded-lg p-6 text-white text-center">
+          <div class="text-lg mb-2">الراتب الصافي الشهري</div>
+          <div id="netSalary" class="text-4xl font-bold count-up">0 ريال</div>
+        </div>
+
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <button id="shareResult" class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">
+            <i class="fas fa-share-alt ml-2"></i> شارك النتيجة
+          </button>
+          <button id="whatsappShare" class="flex-1 bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors">
+            <i class="fab fa-whatsapp ml-2"></i> شارك عبر واتساب
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+<section id="faqPage" class="py-16" style="display:none;">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">الأسئلة الشائعة عن رواتب المعلمين وسلّم المعلمين الجديد</h2>
+
+      <div id="faqAccordion" class="space-y-4">
+
+        <!-- كيف يتم احتساب الراتب الأساسي للمعلمين؟ -->
+        <div class="bg-white rounded-lg shadow-md">
+          <button class="w-full text-right p-6 flex justify-between items-center faq-toggle">
+            <span class="font-semibold">كيف يتم احتساب الراتب الأساسي للمعلمين في السعودية؟</span>
+            <i class="fas fa-chevron-down transition-transform"></i>
+          </button>
+          <div class="faq-content hidden p-6 pt-0 text-gray-600">
+            يتم احتساب الراتب الأساسي للمعلم وفقًا لسلم المعلمين الجديد، بحيث يُحدد الراتب بناءً على المسار الوظيفي (مساعد معلم، معلم ممارس، معلم متقدم، معلم خبير)، والمستوى والدرجة. يزداد الراتب تدريجيًا كلما ارتفع المستوى والدرجة حسب لوائح وزارة التعليم السعودية.
+          </div>
+        </div>
+
+        <!-- ما هو سلم رواتب المعلمين الجديد؟ -->
+        <div class="bg-white rounded-lg shadow-md">
+          <button class="w-full text-right p-6 flex justify-between items-center faq-toggle">
+            <span class="font-semibold">ما هو سلم رواتب المعلمين الجديد في السعودية؟</span>
+            <i class="fas fa-chevron-down transition-transform"></i>
+          </button>
+          <div class="faq-content hidden p-6 pt-0 text-gray-600">
+            سلم رواتب المعلمين الجديد هو النظام المعتمد من وزارة التعليم لتنظيم رواتب المعلمين والمعلمات في مختلف المراحل التعليمية. يشمل السلم أربعة مسارات وظيفية ويعتمد على المستوى والدرجة والعلاوة السنوية لضمان الشفافية والعدالة في الرواتب.
+          </div>
+        </div>
+
+        <!-- ما هي قيمة العلاوة السنوية للمعلمين؟ -->
+        <div class="bg-white rounded-lg shadow-md">
+          <button class="w-full text-right p-6 flex justify-between items-center faq-toggle">
+            <span class="font-semibold">ما هي قيمة العلاوة السنوية للمعلمين حسب السلم الجديد؟</span>
+            <i class="fas fa-chevron-down transition-transform"></i>
+          </button>
+          <div class="faq-content hidden p-6 pt-0 text-gray-600">
+            تختلف قيمة العلاوة السنوية حسب تصنيف المعلم:
+            <ul class="list-disc pr-6 mt-2">
+              <li>مساعد معلم/معلم: من 300 إلى 400 ريال سنويًا.</li>
+              <li>معلم ممارس: حتى 540 ريال سنويًا.</li>
+              <li>معلم متقدم: حتى 580 ريال سنويًا.</li>
+              <li>معلم خبير: حتى 640 ريال سنويًا.</li>
+            </ul>
+            تضاف العلاوة للراتب الأساسي سنويًا بحسب اللوائح الرسمية.
+          </div>
+        </div>
+
+        <!-- ما هي عناصر الراتب الشهري للمعلمين في السعودية؟ -->
+        <div class="bg-white rounded-lg shadow-md">
+          <button class="w-full text-right p-6 flex justify-between items-center faq-toggle">
+            <span class="font-semibold">ما هي مكونات الراتب الشهري للمعلمين في السعودية؟</span>
+            <i class="fas fa-chevron-down transition-transform"></i>
+          </button>
+          <div class="faq-content hidden p-6 pt-0 text-gray-600">
+            يتكون راتب المعلم الشهري من:
+            <ul class="list-disc pr-6 mt-2">
+              <li>الراتب الأساسي حسب السلم والدرجة.</li>
+              <li>بدل النقل (500 أو 700 أو 900 ريال حسب المستوى).</li>
+              <li>العلاوة السنوية.</li>
+              <li>استقطاع التقاعد بنسبة 9% من الراتب الأساسي.</li>
+              <li>الراتب الصافي (الناتج النهائي بعد الاستقطاعات).</li>
+            </ul>
+            جميع القيم معتمدة وفق لوائح وزارة التعليم السعودية.
+          </div>
+        </div>
+
+        <!-- كيف تتم الترقية في سلم المعلمين الجديد؟ -->
+        <div class="bg-white rounded-lg shadow-md">
+          <button class="w-full text-right p-6 flex justify-between items-center faq-toggle">
+            <span class="font-semibold">كيف تتم الترقية في سلم المعلمين الجديد؟</span>
+            <i class="fas fa-chevron-down transition-transform"></i>
+          </button>
+          <div class="faq-content hidden p-6 pt-0 text-gray-600">
+            تتم الترقية في سلم المعلمين الجديد بناءً على عدة معايير منها: عدد سنوات الخدمة، المؤهل العلمي، تقييم الأداء، اجتياز البرامج التدريبية، ووجود شاغر وظيفي. يجب استيفاء جميع الشروط حسب أنظمة وزارة التعليم للانتقال من مسار إلى مسار أعلى.
+          </div>
+        </div>
+
+        <!-- من أين أحصل على أحدث معلومات سلم رواتب المعلمين في السعودية؟ -->
+        <div class="bg-white rounded-lg shadow-md">
+          <button class="w-full text-right p-6 flex justify-between items-center faq-toggle">
+            <span class="font-semibold">من أين أحصل على أحدث تفاصيل سلم رواتب المعلمين في السعودية؟</span>
+            <i class="fas fa-chevron-down transition-transform"></i>
+          </button>
+          <div class="faq-content hidden p-6 pt-0 text-gray-600">
+            جميع المعلومات حول رواتب المعلمين وسلّم المعلمين الجديد متوفرة في موقع وزارة التعليم السعودية (<a href="https://www.moe.gov.sa" class="text-blue-600 underline" target="_blank">moe.gov.sa</a>) والأنظمة الرسمية المعتمدة من الموارد البشرية.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Sticky Net Salary Bar -->
+  <div id="stickyBar" class="sticky-bar bg-green-600 text-white p-4 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+      <div>
+        <span class="text-sm opacity-90">الراتب الصافي</span>
+        <div id="stickyNetSalary" class="text-xl font-bold">0 ريال</div>
+      </div>
+      <button id="backToTop" class="bg-white bg-opacity-20 rounded-full p-2" aria-label="أعلى الصفحة">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2 flex justify-around z-50">
+    <button id="navLanding" class="flex flex-col items-center p-2 text-blue-600">
+      <i class="fas fa-home text-xl mb-1"></i>
+      <span class="text-xs">الرئيسية</span>
+    </button>
+    <button id="navCalculator" class="flex flex-col items-center p-2 text-gray-400">
+      <i class="fas fa-calculator text-xl mb-1"></i>
+      <span class="text-xs">الحاسبة</span>
+    </button>
+    <button id="navFAQ" class="flex flex-col items-center p-2 text-gray-400">
+      <i class="fas fa-question-circle text-xl mb-1"></i>
+      <span class="text-xs">الأسئلة</span>
+    </button>
+  </div>
+
+  <script>
+    "use strict";
+
+    // -------- Utilities (Latin digits) --------
+    function formatCurrency(amount) {
+      // أرقام إنجليزية وثلاث خانات عشرية كحد أقصى
+      const formatted = new Intl.NumberFormat('en-US', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2
+      }).format(amount);
+      return formatted + ' ريال';
+    }
+
+    function formatNumber(num) {
+      return new Intl.NumberFormat('en-US', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2
+      }).format(num);
+    }
+
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    function setQueryParam(param, value) {
+      const url = new URL(window.location);
+      url.searchParams.set(param, value);
+      window.history.replaceState({}, '', url);
+    }
+
+    function removeQueryParam(param) {
+      const url = new URL(window.location);
+      url.searchParams.delete(param);
+      window.history.replaceState({}, '', url);
+    }
+
+    // -------- Dark mode --------
+    function initializeDarkMode() {
+      const isDark = localStorage.getItem('darkMode') === 'true';
+      if (isDark) {
+        document.body.classList.add('dark');
+        document.querySelector('#darkModeToggle i').className = 'fas fa-sun text-yellow-400';
+      }
+    }
+
+    function toggleDarkMode() {
+      const isDark = document.body.classList.toggle('dark');
+      localStorage.setItem('darkMode', isDark);
+      const icon = document.querySelector('#darkModeToggle i');
+      icon.className = isDark ? 'fas fa-sun text-yellow-400' : 'fas fa-moon text-gray-600';
+    }
+
+    // -------- Navigation --------
+    let currentPage = 'landing';
+    function showPage(page) {
+      document.getElementById('landingPage').style.display = page === 'landing' ? 'block' : 'none';
+      document.getElementById('calculatorPage').style.display = page === 'calculator' ? 'block' : 'none';
+      document.getElementById('faqPage').style.display = page === 'faq' ? 'block' : 'none';
+
+      document.querySelectorAll('[id^="nav"]').forEach(btn => {
+        btn.classList.remove('text-blue-600'); btn.classList.add('text-gray-400');
+      });
+      if (page === 'landing') {
+        document.getElementById('navLanding').classList.remove('text-gray-400');
+        document.getElementById('navLanding').classList.add('text-blue-600');
+      } else if (page === 'calculator') {
+        document.getElementById('navCalculator').classList.remove('text-gray-400');
+        document.getElementById('navCalculator').classList.add('text-blue-600');
+      } else {
+        document.getElementById('navFAQ').classList.remove('text-gray-400');
+        document.getElementById('navFAQ').classList.add('text-blue-600');
+      }
+      currentPage = page;
+    }
+
+    // -------- Data --------
+    const salaryData = {
+      "tracks": [
+        {
+          "id": "assistant_teacher",
+          "label": "مساعد معلم / معلم",
+          "levels": [
+            { "level": 1, "annual_raise": 300, "grades": [
+              {"grade": 1, "basic": 5200, "retirement": 468, "transport": 500, "net": 5232.0},
+              {"grade": 2, "basic": 5500, "retirement": 495, "transport": 500, "net": 5505.0},
+              {"grade": 3, "basic": 5800, "retirement": 522, "transport": 500, "net": 5778.0},
+              {"grade": 4, "basic": 6100, "retirement": 549, "transport": 500, "net": 6051.0},
+              {"grade": 5, "basic": 6400, "retirement": 576, "transport": 500, "net": 6324.0},
+              {"grade": 6, "basic": 6700, "retirement": 603, "transport": 500, "net": 6597.0}
+            ]},
+            { "level": 2, "annual_raise": 320, "grades": [
+              {"grade": 1, "basic": 7000, "retirement": 630, "transport": 700, "net": 7070.0},
+              {"grade": 2, "basic": 7320, "retirement": 658.8, "transport": 700, "net": 7361.2},
+              {"grade": 3, "basic": 7640, "retirement": 687.6, "transport": 700, "net": 7652.4},
+              {"grade": 4, "basic": 7960, "retirement": 716.4, "transport": 700, "net": 7943.6},
+              {"grade": 5, "basic": 8280, "retirement": 745.2, "transport": 700, "net": 8234.8},
+              {"grade": 6, "basic": 8600, "retirement": 774.0, "transport": 700, "net": 8526.0}
+            ]},
+            { "level": 3, "annual_raise": 340, "grades": [
+              {"grade": 1, "basic": 8920, "retirement": 802.8, "transport": 700, "net": 8817.2},
+              {"grade": 2, "basic": 9260, "retirement": 833.4, "transport": 700, "net": 9126.6},
+              {"grade": 3, "basic": 9600, "retirement": 864.0, "transport": 700, "net": 9436.0},
+              {"grade": 4, "basic": 9940, "retirement": 894.6, "transport": 700, "net": 9745.4},
+              {"grade": 5, "basic": 10280, "retirement": 925.2, "transport": 700, "net": 10054.8},
+              {"grade": 6, "basic": 10620, "retirement": 955.8, "transport": 700, "net": 10364.2}
+            ]},
+            { "level": 4, "annual_raise": 360, "grades": [
+              {"grade": 1, "basic": 10960, "retirement": 986.4, "transport": 700, "net": 10673.6},
+              {"grade": 2, "basic": 11320, "retirement": 1018.8, "transport": 700, "net": 11001.2},
+              {"grade": 3, "basic": 11680, "retirement": 1051.2, "transport": 700, "net": 11328.8},
+              {"grade": 4, "basic": 12040, "retirement": 1083.6, "transport": 700, "net": 11656.4},
+              {"grade": 5, "basic": 12400, "retirement": 1116.0, "transport": 700, "net": 11984.0},
+              {"grade": 6, "basic": 12760, "retirement": 1148.4, "transport": 700, "net": 12311.6}
+            ]},
+            { "level": 5, "annual_raise": 380, "grades": [
+              {"grade": 1, "basic": 13120, "retirement": 1180.8, "transport": 700, "net": 12639.2},
+              {"grade": 2, "basic": 13500, "retirement": 1215.0, "transport": 700, "net": 12985.0},
+              {"grade": 3, "basic": 13880, "retirement": 1249.2, "transport": 700, "net": 13330.8},
+              {"grade": 4, "basic": 14260, "retirement": 1283.4, "transport": 700, "net": 13676.6},
+              {"grade": 5, "basic": 14640, "retirement": 1317.6, "transport": 700, "net": 14022.4},
+              {"grade": 6, "basic": 15020, "retirement": 1351.8, "transport": 700, "net": 14368.2}
+            ]},
+            { "level": 6, "annual_raise": 400, "grades": [
+              {"grade": 1, "basic": 15400, "retirement": 1386.0, "transport": 700, "net": 14714.0},
+              {"grade": 2, "basic": 15800, "retirement": 1422.0, "transport": 700, "net": 15078.0},
+              {"grade": 3, "basic": 16200, "retirement": 1458.0, "transport": 700, "net": 15442.0},
+              {"grade": 4, "basic": 16600, "retirement": 1494.0, "transport": 700, "net": 15806.0},
+              {"grade": 5, "basic": 17000, "retirement": 1530.0, "transport": 700, "net": 16170.0},
+              {"grade": 6, "basic": 17400, "retirement": 1566.0, "transport": 700, "net": 16534.0}
+            ]}
+          ]
+        },
+        {
+          "id": "practicing_teacher",
+          "label": "معلم ممارس",
+          "levels": [
+            { "level": 1, "annual_raise": 500, "grades": [
+              {"grade": 1, "basic": 7570, "retirement": 681.3, "transport": 700, "net": 7588.7},
+              {"grade": 2, "basic": 8070, "retirement": 726.3, "transport": 700, "net": 8043.7},
+              {"grade": 3, "basic": 8570, "retirement": 771.3, "transport": 700, "net": 8498.7},
+              {"grade": 4, "basic": 9070, "retirement": 816.3, "transport": 700, "net": 8953.7},
+              {"grade": 5, "basic": 9570, "retirement": 861.3, "transport": 700, "net": 9408.7},
+              {"grade": 6, "basic": 10070, "retirement": 906.3, "transport": 700, "net": 9863.7}
+            ]},
+            { "level": 2, "annual_raise": 520, "grades": [
+              {"grade": 1, "basic": 10570, "retirement": 951.3, "transport": 700, "net": 10318.7},
+              {"grade": 2, "basic": 11090, "retirement": 998.1, "transport": 700, "net": 10791.9},
+              {"grade": 3, "basic": 11610, "retirement": 1044.9, "transport": 700, "net": 11265.1},
+              {"grade": 4, "basic": 12130, "retirement": 1091.7, "transport": 700, "net": 11738.3},
+              {"grade": 5, "basic": 12650, "retirement": 1138.5, "transport": 700, "net": 12211.5},
+              {"grade": 6, "basic": 13170, "retirement": 1185.3, "transport": 700, "net": 12684.7}
+            ]},
+            { "level": 3, "annual_raise": 540, "grades": [
+              {"grade": 1, "basic": 13690, "retirement": 1232.1, "transport": 700, "net": 13157.9},
+              {"grade": 2, "basic": 14230, "retirement": 1280.7, "transport": 700, "net": 13649.3},
+              {"grade": 3, "basic": 14770, "retirement": 1329.3, "transport": 700, "net": 14140.7},
+              {"grade": 4, "basic": 15310, "retirement": 1377.9, "transport": 700, "net": 14632.1},
+              {"grade": 5, "basic": 15850, "retirement": 1426.5, "transport": 700, "net": 15123.5},
+              {"grade": 6, "basic": 16390, "retirement": 1475.1, "transport": 700, "net": 15614.9}
+            ]},
+            { "level": 4, "annual_raise": 540, "grades": [
+              {"grade": 1, "basic": 16930, "retirement": 1523.7, "transport": 700, "net": 16106.3},
+              {"grade": 2, "basic": 17470, "retirement": 1572.3, "transport": 700, "net": 16597.7},
+              {"grade": 3, "basic": 18010, "retirement": 1620.9, "transport": 700, "net": 17089.1},
+              {"grade": 4, "basic": 18550, "retirement": 1669.5, "transport": 700, "net": 17580.5},
+              {"grade": 5, "basic": 19090, "retirement": 1718.1, "transport": 700, "net": 18071.9},
+              {"grade": 6, "basic": 19630, "retirement": 1766.7, "transport": 700, "net": 18563.3}
+            ]},
+            { "level": 5, "annual_raise": 540, "grades": [
+              {"grade": 1, "basic": 20170, "retirement": 1815.3, "transport": 700, "net": 19054.7},
+              {"grade": 2, "basic": 20710, "retirement": 1863.9, "transport": 700, "net": 19546.1},
+              {"grade": 3, "basic": 21250, "retirement": 1912.5, "transport": 700, "net": 20037.5}
+            ]}
+          ]
+        },
+        {
+          "id": "senior_teacher",
+          "label": "معلم متقدم",
+          "levels": [
+            { "level": 1, "annual_raise": 540, "grades": [
+              {"grade": 1, "basic": 9950, "retirement": 895.5, "transport": 700, "net": 9754.5},
+              {"grade": 2, "basic": 10490, "retirement": 944.1, "transport": 700, "net": 10245.9},
+              {"grade": 3, "basic": 11030, "retirement": 992.7, "transport": 700, "net": 10737.3},
+              {"grade": 4, "basic": 11570, "retirement": 1041.3, "transport": 700, "net": 11228.7},
+              {"grade": 5, "basic": 12110, "retirement": 1089.9, "transport": 700, "net": 11720.1},
+              {"grade": 6, "basic": 12650, "retirement": 1138.5, "transport": 700, "net": 12211.5}
+            ]},
+            { "level": 2, "annual_raise": 560, "grades": [
+              {"grade": 1, "basic": 13190, "retirement": 1187.1, "transport": 700, "net": 12702.9},
+              {"grade": 2, "basic": 13750, "retirement": 1237.5, "transport": 700, "net": 13212.5},
+              {"grade": 3, "basic": 14310, "retirement": 1287.9, "transport": 700, "net": 13722.1},
+              {"grade": 4, "basic": 14870, "retirement": 1338.3, "transport": 700, "net": 14231.7},
+              {"grade": 5, "basic": 15430, "retirement": 1388.7, "transport": 700, "net": 14741.3},
+              {"grade": 6, "basic": 15990, "retirement": 1439.1, "transport": 700, "net": 15250.9}
+            ]},
+              { "level": 3, "annual_raise": 580, "grades": [
+              {"grade": 1, "basic": 16550, "retirement": 1489.5, "transport": 700, "net": 15760.5},
+              {"grade": 2, "basic": 17130, "retirement": 1541.7, "transport": 700, "net": 16288.3},
+              {"grade": 3, "basic": 17710, "retirement": 1593.9, "transport": 700, "net": 16816.1},
+              {"grade": 4, "basic": 18290, "retirement": 1646.1, "transport": 700, "net": 17343.9},
+              {"grade": 5, "basic": 18870, "retirement": 1698.3, "transport": 700, "net": 17871.7},
+              {"grade": 6, "basic": 19450, "retirement": 1750.5, "transport": 700, "net": 18399.5}
+            ]},
+            { "level": 4, "annual_raise": 580, "grades": [
+              {"grade": 1, "basic": 20030, "retirement": 1802.7, "transport": 900, "net": 19127.3},
+              {"grade": 2, "basic": 20610, "retirement": 1854.9, "transport": 900, "net": 19655.1},
+              {"grade": 3, "basic": 21190, "retirement": 1907.1, "transport": 900, "net": 20182.9},
+              {"grade": 4, "basic": 21770, "retirement": 1959.3, "transport": 900, "net": 20510.7}
+            ]}
+          ]
+        },
+        {
+          "id": "expert_teacher",
+          "label": "معلم خبير",
+          "levels": [
+            { "level": 1, "annual_raise": 600, "grades": [
+              {"grade": 1, "basic": 12650, "retirement": 1138.5, "transport": 700, "net": 12211.5},
+              {"grade": 2, "basic": 13250, "retirement": 1192.5, "transport": 700, "net": 12757.5},
+              {"grade": 3, "basic": 13850, "retirement": 1246.5, "transport": 700, "net": 13303.5},
+              {"grade": 4, "basic": 14450, "retirement": 1300.5, "transport": 700, "net": 13849.5},
+              {"grade": 5, "basic": 15050, "retirement": 1354.5, "transport": 700, "net": 14395.5},
+              {"grade": 6, "basic": 15650, "retirement": 1408.5, "transport": 700, "net": 14941.5}
+            ]},
+            { "level": 2, "annual_raise": 620, "grades": [
+              {"grade": 1, "basic": 16250, "retirement": 1462.5, "transport": 900, "net": 15687.5},
+              {"grade": 2, "basic": 16870, "retirement": 1518.3, "transport": 900, "net": 16251.7},
+              {"grade": 3, "basic": 17490, "retirement": 1574.1, "transport": 900, "net": 16815.9},
+              {"grade": 4, "basic": 18110, "retirement": 1629.9, "transport": 900, "net": 17380.1},
+              {"grade": 5, "basic": 18730, "retirement": 1685.7, "transport": 900, "net": 17944.3},
+              {"grade": 6, "basic": 19350, "retirement": 1741.5, "transport": 900, "net": 18508.5}
+            ]},
+            { "level": 3, "annual_raise": 640, "grades": [
+              {"grade": 1, "basic": 19970, "retirement": 1797.3, "transport": 900, "net": 19072.7},
+              {"grade": 2, "basic": 20610, "retirement": 1854.9, "transport": 900, "net": 19655.1},
+              {"grade": 3, "basic": 21250, "retirement": 1912.5, "transport": 900, "net": 20237.5},
+              {"grade": 4, "basic": 21890, "retirement": 1970.1, "transport": 900, "net": 20819.9},
+              {"grade": 5, "basic": 22530, "retirement": 2027.7, "transport": 900, "net": 21402.3},
+              {"grade": 6, "basic": 23170, "retirement": 2085.3, "transport": 900, "net": 21984.7}
+            ]}
+          ]
+        }
+      ]
+    };
+
+    // -------- App state --------
+    let currentTrack = null;
+    let currentLevel = null;
+    let currentGrade = null;
+
+    // -------- Tracks --------
+    function initializeTracks() {
+      const trackSelector = document.getElementById('trackSelector');
+      trackSelector.innerHTML = '';
+      salaryData.tracks.forEach(track => {
+        const chip = document.createElement('div');
+        chip.className = 'track-chip cursor-pointer border-2 border-gray-200 rounded-lg p-4 text-center hover:border-blue-300';
+        chip.dataset.trackId = track.id;
+        chip.innerHTML = `
+          <div class="font-semibold">${track.label}</div>
+          <div class="text-sm text-gray-500 mt-1">${formatNumber(track.levels.length)} مستويات</div>
+        `;
+        chip.addEventListener('click', () => selectTrack(track.id));
+        trackSelector.appendChild(chip);
+      });
+    }
+
+    function selectTrack(trackId) {
+      currentTrack = trackId;
+      setQueryParam('t', trackId);
+      document.querySelectorAll('.track-chip').forEach(chip => {
+        chip.classList.remove('active');
+        if (chip.dataset.trackId === trackId) chip.classList.add('active');
+      });
+      document.getElementById('levelSection').style.display = 'block';
+      document.getElementById('levelSection').classList.add('slide-in');
+      initializeLevels();
+      resetGradeSelection();
+    }
+
+    // -------- Levels --------
+    function initializeLevels() {
+      const track = salaryData.tracks.find(t => t.id === currentTrack);
+      const levelSelector = document.getElementById('levelSelector');
+      levelSelector.innerHTML = '';
+      track.levels.forEach(level => {
+        const btn = document.createElement('button');
+        btn.className = 'level-btn border-2 border-gray-200 rounded-lg p-3 text-center hover:border-blue-300';
+        btn.dataset.level = level.level;
+        btn.innerHTML = `
+          <div class="font-bold text-lg">${formatNumber(level.level)}</div>
+          <div class="text-xs text-gray-500">مستوى</div>
+        `;
+        btn.addEventListener('click', () => selectLevel(level.level));
+        levelSelector.appendChild(btn);
+      });
+    }
+
+    function selectLevel(level) {
+      currentLevel = level;
+      setQueryParam('l', level);
+      document.querySelectorAll('.level-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (parseInt(btn.dataset.level, 10) === level) btn.classList.add('active');
+      });
+      document.getElementById('gradeSection').style.display = 'block';
+      document.getElementById('gradeSection').classList.add('slide-in');
+      initializeGrades();
+    }
+
+    // -------- Grades --------
+    function initializeGrades() {
+      const track = salaryData.tracks.find(t => t.id === currentTrack);
+      const level = track.levels.find(l => l.level === currentLevel);
+      const gradeSelector = document.getElementById('gradeSelector');
+      gradeSelector.innerHTML = '';
+      level.grades.forEach(grade => {
+        const btn = document.createElement('button');
+        btn.className = 'grade-btn border-2 border-gray-200 rounded-lg p-3 text-center hover:border-green-300';
+        btn.dataset.grade = grade.grade;
+        btn.innerHTML = `
+          <div class="font-bold text-lg">${formatNumber(grade.grade)}</div>
+          <div class="text-xs text-gray-500">درجة</div>
+        `;
+        btn.addEventListener('click', () => selectGrade(grade.grade));
+        gradeSelector.appendChild(btn);
+      });
+    }
+
+    function selectGrade(grade) {
+      currentGrade = grade;
+      setQueryParam('g', grade);
+      document.querySelectorAll('.grade-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (parseInt(btn.dataset.grade, 10) === grade) btn.classList.add('active');
+      });
+      calculateSalary();
+    }
+
+    // -------- Calculation --------
+    function calculateSalary() {
+      const track = salaryData.tracks.find(t => t.id === currentTrack);
+      const level = track.levels.find(l => l.level === currentLevel);
+      const grade = level.grades.find(g => g.grade === currentGrade);
+      if (!grade) return;
+
+      document.getElementById('resultsCard').style.display = 'block';
+      document.getElementById('resultsCard').classList.add('slide-in');
+
+      setTimeout(() => {
+        document.getElementById('basicSalary').textContent = formatCurrency(grade.basic);
+        document.getElementById('transportAllowance').textContent = formatCurrency(grade.transport);
+        document.getElementById('retirementDeduction').textContent = '-' + formatCurrency(grade.retirement);
+        document.getElementById('annualRaise').textContent = formatCurrency(level.annual_raise);
+        document.getElementById('netSalary').textContent = formatCurrency(grade.net);
+        document.getElementById('stickyNetSalary').textContent = formatCurrency(grade.net);
+        showStickyBar();
+      }, 200);
+    }
+
+    function showStickyBar() {
+      const stickyBar = document.getElementById('stickyBar');
+      stickyBar.classList.add('show');
+    }
+
+    function resetLevelSelection() {
+      currentLevel = null; currentGrade = null;
+      removeQueryParam('l'); removeQueryParam('g');
+      document.getElementById('levelSection').style.display = 'none';
+      document.getElementById('gradeSection').style.display = 'none';
+      document.getElementById('resultsCard').style.display = 'none';
+      document.getElementById('stickyBar').classList.remove('show');
+    }
+
+    function resetGradeSelection() {
+      currentGrade = null;
+      removeQueryParam('g');
+      document.getElementById('gradeSection').style.display = 'none';
+      document.getElementById('resultsCard').style.display = 'none';
+      document.getElementById('stickyBar').classList.remove('show');
+    }
+
+    // -------- Share --------
+    function shareResult() {
+      const url = window.location.href;
+      if (navigator.share) {
+        navigator.share({
+          title: 'رواتب - حاسبة رواتب الوظائف التعليمية',
+          text: `راتبي الصافي: ${document.getElementById('netSalary').textContent}`,
+          url: url
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(url).then(() => alert('تم نسخ الرابط إلى الحافظة'));
+      }
+    }
+
+    function shareWhatsApp() {
+      const netSalaryElem = document.getElementById('netSalary');
+      const netSalary = netSalaryElem ? netSalaryElem.textContent.trim() : '0 ريال';
+
+      // التحقق من أنه تم حساب الراتب قبل المشاركة
+      if (!netSalary || netSalary === '0 ريال' || !/\d/.test(netSalary)) {
+          alert('يرجى حساب الراتب أولاً قبل مشاركة النتيجة!');
+          return; // إيقاف الدالة
+      }
+      
+      const url = window.location.href;
+      const text = `راتبي الصافي في الوظائف التعليمية: ${netSalary}
+
+احسب راتبك الآن عبر حاسبة سلم المعلمين الجديد:
+${url}`;
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // -------- FAQ --------
+    function initializeFAQ() {
+      document.querySelectorAll('.faq-toggle').forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          const content = toggle.nextElementSibling;
+          const icon = toggle.querySelector('i');
+          if (content.classList.contains('hidden')) {
+            content.classList.remove('hidden'); icon.style.transform = 'rotate(180deg)';
+          } else {
+            content.classList.add('hidden'); icon.style.transform = 'rotate(0deg)';
+          }
+        });
+      });
+    }
+
+    // -------- URL loader --------
+    function loadFromURL() {
+      const trackId = getQueryParam('t');
+      const level = parseInt(getQueryParam('l'), 10);
+      const grade = parseInt(getQueryParam('g'), 10);
+      if (trackId) {
+        showPage('calculator');
+        selectTrack(trackId);
+        if (!isNaN(level)) {
+          setTimeout(() => {
+            selectLevel(level);
+            if (!isNaN(grade)) {
+              setTimeout(() => selectGrade(grade), 100);
+            }
+          }, 100);
+        }
+      }
+    }
+
+    // -------- Init --------
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeDarkMode();
+      initializeTracks();
+      initializeFAQ();
+      loadFromURL();
+
+      // Events
+      document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
+      document.getElementById('startCalculatorBtn').addEventListener('click', () => showPage('calculator'));
+      document.getElementById('shareResult').addEventListener('click', shareResult);
+      document.getElementById('whatsappShare').addEventListener('click', shareWhatsApp);
+      document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      // Bottom nav
+      document.getElementById('navLanding').addEventListener('click', () => showPage('landing'));
+      document.getElementById('navCalculator').addEventListener('click', () => showPage('calculator'));
+      document.getElementById('navFAQ').addEventListener('click', () => showPage('faq'));
+
+      // Sticky bar on scroll
+      window.addEventListener('scroll', () => {
+        const stickyBar = document.getElementById('stickyBar');
+        if (currentPage === 'calculator' && document.getElementById('resultsCard').style.display !== 'none') {
+          if (window.scrollY > 200) stickyBar.classList.add('show');
+          else stickyBar.classList.remove('show');
+        }
+      });
+
+      // Simple tooltips
+      document.addEventListener('click', (e) => {
+        const t = e.target.matches('[data-tooltip]') ? e.target : e.target.closest('[data-tooltip]');
+        if (t && t.dataset.tooltip) alert(t.dataset.tooltip);
+      });
+    });
+  </script>
+</body>
+</html>
