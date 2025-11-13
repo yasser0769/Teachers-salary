@@ -4,6 +4,7 @@
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="O9Y34Bg1J6Ln4vp/slf7BA" async></script>
 <link rel="icon" type="image/png" href="https://static.tumblr.com/8cspwwp/K7Kt02vwg/favicon-32x32.png">
 <meta name="google-site-verification" content="EmuAssYNVYuwRrRGphfjXl25VHWLfb8umw5jILnWcWs" />
+<meta name="google-site-verification" content="47wn2Fwtv9isomAet86dH-aDCtmoeDl_zxpzRA0N8WQ" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>رواتب المعلمين في السعودية - سلم المعلمين الجديد وحاسبة الراتب</title>
@@ -23,10 +24,23 @@
   <!-- Arabic font -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 
   <style>
-    * { font-family: 'Noto Sans Arabic', sans-serif; }
+    * { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+    :root {
+      --primary-500: #2563eb;
+      --primary-100: #eff6ff;
+      --success-500: #059669;
+      --success-100: #ecfdf5;
+      --warning-500: #f59e0b;
+      --warning-100: #fef3c7;
+      --danger-500: #dc2626;
+      --danger-100: #fee2e2;
+      --slate-700: #334155;
+      --slate-200: #e2e8f0;
+      --surface-50: #f8fafc;
+    }
     .rtl { direction: rtl; text-align: right; }
     .dark { --tw-bg-opacity: 1; background-color: rgb(17 24 39 / var(--tw-bg-opacity)); color: white; }
     .dark .bg-white { background-color: rgb(31 41 55); }
@@ -43,7 +57,18 @@
     .count-up { animation: countUp 1s ease-out; }
     @keyframes countUp { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-    .sticky-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; transform: translateY(100%); transition: transform 0.3s ease; }
+    .sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      background: linear-gradient(90deg, #0ea5e9, #1079e6);
+      color: white;
+      box-shadow: 0 -12px 35px -28px rgba(15, 23, 42, 0.7);
+    }
     .sticky-bar.show { transform: translateY(0); }
 
     .track-chip { transition: all 0.2s ease; }
@@ -61,25 +86,186 @@
     /* ضمان الأرقام بالإنجليزية */
     .latin-nums { font-variant-numeric: tabular-nums; }
 
-    .nav-pill {
-      background-color: rgba(243, 244, 246, 0.8);
-      color: #374151;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      transition: all 0.2s ease;
+    .results-grid {
+      display: grid;
+      gap: 1rem;
     }
-    .nav-pill:hover { background-color: rgba(229, 231, 235, 1); }
-    .nav-pill.active-nav {
-      background-color: #1079e6;
+    @media (min-width: 768px) {
+      .results-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    .result-card {
+      position: relative;
+      background: white;
+      border-radius: 1.25rem;
+      border: 1px solid var(--slate-200);
+      padding: 1.5rem;
+      box-shadow: 0 20px 45px -28px rgba(15, 23, 42, 0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .result-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 28px 55px -30px rgba(15, 23, 42, 0.55);
+    }
+    .result-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+    .result-card--primary { border-top: 4px solid var(--primary-500); }
+    .result-card--primary::after { background: linear-gradient(135deg, var(--primary-500), transparent); }
+    .result-card--success { border-top: 4px solid var(--success-500); }
+    .result-card--success::after { background: linear-gradient(135deg, var(--success-500), transparent); }
+    .result-card--warning { border-top: 4px solid var(--warning-500); }
+    .result-card--warning::after { background: linear-gradient(135deg, var(--warning-500), transparent); }
+    .result-card--danger { border-top: 4px solid var(--danger-500); }
+    .result-card--danger::after { background: linear-gradient(135deg, var(--danger-500), transparent); }
+
+    .result-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
       color: white;
-      box-shadow: 0 10px 15px -3px rgba(16, 121, 230, 0.3);
+    }
+    .result-card--primary .result-icon { background: var(--primary-500); }
+    .result-card--success .result-icon { background: var(--success-500); }
+    .result-card--warning .result-icon { background: var(--warning-500); }
+    .result-card--danger .result-icon { background: var(--danger-500); }
+
+    .result-label {
+      font-weight: 600;
+      color: var(--slate-700);
+      font-size: 1.05rem;
+    }
+    .result-helper {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    .result-value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--slate-700);
+    }
+
+    .result-highlight {
+      margin-top: 1.75rem;
+      border-radius: 1.5rem;
+      background: linear-gradient(135deg, #0ea5e9, #1079e6);
+      padding: 2rem;
+      text-align: center;
+      color: white;
+      box-shadow: 0 25px 55px -30px rgba(14, 165, 233, 0.7);
+    }
+    .result-highlight .result-label { color: rgba(255, 255, 255, 0.85); }
+    .result-highlight .result-value {
+      color: white;
+      font-size: 2.5rem;
+    }
+
+    .result-actions {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    @media (min-width: 640px) {
+      .result-actions {
+        flex-direction: row;
+      }
+    }
+    .result-actions button {
+      flex: 1;
+      padding: 0.85rem 1.25rem;
+      border-radius: 0.9rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .result-actions button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 32px -25px rgba(15, 23, 42, 0.7);
+    }
+    #shareResult {
+      background: white;
+      color: var(--primary-500);
+      border-color: rgba(37, 99, 235, 0.25);
+    }
+    #shareResult:hover {
+      background: var(--primary-100);
+    }
+    #whatsappShare {
+      background: var(--success-500);
+      color: white;
+    }
+    #whatsappShare:hover {
+      background: #047857;
     }
 
     .nav-icon {
       color: #9ca3af;
       transition: color 0.2s ease;
     }
-    .nav-icon.active-nav { color: #1079e6; }
+    .nav-icon.active-nav {
+      color: #1079e6;
+    }
+    .nav-icon.active-nav span {
+      font-weight: 600;
+    }
+
+    .bottom-nav {
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .dark .bottom-nav {
+      background-color: rgba(31, 41, 55, 0.95);
+      border-color: rgba(75, 85, 99, 0.9);
+    }
+
+    .more-menu-panel {
+      backdrop-filter: blur(12px);
+    }
+    .dark .more-menu-panel {
+      background-color: rgba(30, 41, 59, 0.98);
+      border-color: rgba(148, 163, 184, 0.35);
+      color: rgba(226, 232, 240, 0.95);
+    }
+    .dark .more-menu-panel button {
+      color: rgba(226, 232, 240, 0.95) !important;
+    }
+    .dark .more-menu-panel button:hover {
+      background-color: rgba(55, 65, 81, 0.7) !important;
+    }
+    .dark .more-menu-panel i,
+    .dark .more-menu-panel .text-gray-400,
+    .dark .more-menu-panel .text-gray-300 {
+      color: rgb(156, 163, 175) !important;
+    }
+
+    .dark .result-card { background: rgb(30, 41, 59); border-color: rgba(148, 163, 184, 0.25); box-shadow: none; }
+    .dark .result-card::after { opacity: 0.18; }
+    .dark .result-label, .dark .result-value { color: rgba(226, 232, 240, 0.95); }
+    .dark .result-helper { color: rgba(203, 213, 225, 0.7); }
+    .dark .result-highlight { background: linear-gradient(135deg, rgba(56, 189, 248, 0.85), rgba(59, 130, 246, 0.95)); box-shadow: none; }
+    .dark #shareResult { background: rgba(15, 23, 42, 0.65); color: rgba(191, 219, 254, 0.95); border-color: rgba(96, 165, 250, 0.35); }
+    .dark #shareResult:hover { background: rgba(37, 99, 235, 0.25); }
+    .dark #whatsappShare { background: rgba(5, 150, 105, 0.9); }
+    .dark .sticky-bar { background: linear-gradient(90deg, rgba(14, 165, 233, 0.9), rgba(30, 64, 175, 0.9)); box-shadow: none; }
+
+    /* إخفاء عناصر التحكم الافتراضية من Tumblr */
+    .iframe-controls-container,
+    #tumblr_controls {
+      display: none !important;
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900 rtl latin-nums">
@@ -102,13 +288,6 @@
               <i class="fas fa-share-alt text-gray-600"></i>
             </button>
           </div>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <button class="nav-pill" data-nav-target="calculator">حاسبة الرواتب</button>
-          <button class="nav-pill" data-nav-target="faq">الرئيسية والأسئلة</button>
-          <button class="nav-pill" data-nav-target="about">من نحن</button>
-          <button class="nav-pill" data-nav-target="privacy">سياسة الخصوصية</button>
-          <button class="nav-pill" data-nav-target="terms">الشروط والأحكام</button>
         </div>
       </div>
     </div>
@@ -247,56 +426,76 @@
       </div>
 
       <!-- Results -->
-      <div id="resultsCard" class="bg-white rounded-lg shadow-lg p-6 mb-6" style="display:none;">
-        <h3 class="text-2xl font-bold mb-6 text-center">تفاصيل راتبك الشهري</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-blue-50 rounded-lg p-4">
-            <div class="flex items-center justify-between">
-              <span class="text-gray-600">الراتب الأساسي</span>
-              <button class="text-gray-400 hover:text-gray-600" data-tooltip="المبلغ الثابت حسب مستواك ودرجتك">
+      <div id="resultsCard" class="bg-white rounded-2xl shadow-xl p-7 mb-6" style="display:none;">
+        <h3 class="text-2xl font-bold mb-6 text-center text-blue-700">تفاصيل راتبك الشهري</h3>
+        <div class="results-grid">
+          <div class="result-card result-card--primary">
+            <div class="flex items-center gap-3">
+              <div class="result-icon"><i class="fas fa-money-bill-wave"></i></div>
+              <div>
+                <div class="result-label">الراتب الأساسي</div>
+                <p class="result-helper">المبلغ الثابت المعتمد حسب المستوى والدرجة</p>
+              </div>
+              <button type="button" class="ml-auto text-gray-400 hover:text-gray-600" data-tooltip="المبلغ الثابت حسب مستواك ودرجتك">
                 <i class="fas fa-question-circle"></i>
               </button>
             </div>
-            <div id="basicSalary" class="text-2xl font-bold text-blue-600 count-up">0 ريال</div>
+            <div id="basicSalary" class="result-value count-up">0 ريال</div>
           </div>
-          <div class="bg-green-50 rounded-lg p-4">
-            <div class="flex items-center justify-between">
-              <span class="text-gray-600">بدل النقل</span>
-              <button class="text-gray-400 hover:text-gray-600" data-tooltip="بدل شهري ثابت للمساعدة في تكاليف التنقل">
+
+          <div class="result-card result-card--success">
+            <div class="flex items-center gap-3">
+              <div class="result-icon"><i class="fas fa-route"></i></div>
+              <div>
+                <div class="result-label">بدل النقل</div>
+                <p class="result-helper">بدل شهري ثابت لدعم مصاريف التنقل</p>
+              </div>
+              <button type="button" class="ml-auto text-gray-400 hover:text-gray-600" data-tooltip="بدل شهري ثابت للمساعدة في تكاليف التنقل">
                 <i class="fas fa-question-circle"></i>
               </button>
             </div>
-            <div id="transportAllowance" class="text-2xl font-bold text-green-600 count-up">0 ريال</div>
+            <div id="transportAllowance" class="result-value count-up">0 ريال</div>
           </div>
-          <div class="bg-red-50 rounded-lg p-4">
-            <div class="flex items-center justify-between">
-              <span class="text-gray-600">استقطاع التقاعد</span>
-              <button class="text-gray-400 hover:text-gray-600" data-tooltip="نسبة محددة تُخصم للتأمينات الاجتماعية">
+
+          <div class="result-card result-card--danger">
+            <div class="flex items-center gap-3">
+              <div class="result-icon"><i class="fas fa-piggy-bank"></i></div>
+              <div>
+                <div class="result-label">استقطاع التقاعد</div>
+                <p class="result-helper">9% من الراتب الأساسي لصالح التأمينات</p>
+              </div>
+              <button type="button" class="ml-auto text-gray-400 hover:text-gray-600" data-tooltip="نسبة محددة تُخصم للتأمينات الاجتماعية">
                 <i class="fas fa-question-circle"></i>
               </button>
             </div>
-            <div id="retirementDeduction" class="text-2xl font-bold text-red-600 count-up">-0 ريال</div>
+            <div id="retirementDeduction" class="result-value count-up">-0 ريال</div>
           </div>
-          <div class="bg-yellow-50 rounded-lg p-4">
-            <div class="flex items-center justify-between">
-              <span class="text-gray-600">العلاوة السنوية</span>
-              <button class="text-gray-400 hover:text-gray-600" data-tooltip="المبلغ الذي يُضاف لراتبك الأساسي سنوياً">
+
+          <div class="result-card result-card--warning">
+            <div class="flex items-center gap-3">
+              <div class="result-icon"><i class="fas fa-gift"></i></div>
+              <div>
+                <div class="result-label">العلاوة السنوية</div>
+                <p class="result-helper">قيمة الزيادة السنوية المعتمدة لمسارك</p>
+              </div>
+              <button type="button" class="ml-auto text-gray-400 hover:text-gray-600" data-tooltip="المبلغ الذي يُضاف لراتبك الأساسي سنوياً">
                 <i class="fas fa-question-circle"></i>
               </button>
             </div>
-            <div id="annualRaise" class="text-2xl font-bold text-yellow-600 count-up">0 ريال</div>
+            <div id="annualRaise" class="result-value count-up">0 ريال</div>
           </div>
-        </div>
-        <div class="mt-6 bg-gradient-to-r from-green-500 to-green-600 rounded-lg p-6 text-white text-center">
-          <div class="text-lg mb-2">الراتب الصافي الشهري</div>
-          <div id="netSalary" class="text-4xl font-bold count-up">0 ريال</div>
         </div>
 
-        <div class="mt-6 flex flex-col sm:flex-row gap-3">
-          <button id="shareResult" class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">
+        <div class="result-highlight">
+          <div class="result-label text-base">الراتب الصافي الشهري</div>
+          <div id="netSalary" class="result-value count-up">0 ريال</div>
+        </div>
+
+        <div class="result-actions">
+          <button id="shareResult" type="button">
             <i class="fas fa-share-alt ml-2"></i> شارك النتيجة
           </button>
-          <button id="whatsappShare" class="flex-1 bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors">
+          <button id="whatsappShare" type="button">
             <i class="fab fa-whatsapp ml-2"></i> شارك عبر واتساب
           </button>
         </div>
@@ -485,7 +684,7 @@
   </section>
 
   <!-- Sticky Net Salary Bar -->
-  <div id="stickyBar" class="sticky-bar bg-green-600 text-white p-4 shadow-lg">
+  <div id="stickyBar" class="sticky-bar p-4">
     <div class="container mx-auto flex justify-between items-center">
       <div>
         <span class="text-sm opacity-90">الراتب الصافي</span>
@@ -498,7 +697,7 @@
   </div>
 
   <!-- Bottom Navigation -->
-  <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2 flex justify-around z-50">
+  <div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-gray-200 p-2 flex justify-around items-center z-50 shadow-lg bottom-nav">
     <button class="flex flex-col items-center p-2 nav-icon" data-nav-target="faq" aria-label="الرئيسية">
       <i class="fas fa-home text-xl mb-1"></i>
       <span class="text-xs">الرئيسية</span>
@@ -507,10 +706,37 @@
       <i class="fas fa-calculator text-xl mb-1"></i>
       <span class="text-xs">الحاسبة</span>
     </button>
-    <button class="flex flex-col items-center p-2 nav-icon" data-nav-target="about" aria-label="من نحن">
-      <i class="fas fa-info-circle text-xl mb-1"></i>
-      <span class="text-xs">من نحن</span>
-    </button>
+    <div class="relative flex flex-col items-center">
+      <button id="moreMenuToggle" class="flex flex-col items-center p-2 nav-icon" aria-haspopup="true" aria-expanded="false" aria-label="المزيد">
+        <i class="fas fa-ellipsis-h text-xl mb-1"></i>
+        <span class="text-xs">المزيد</span>
+      </button>
+      <div id="moreMenu" class="hidden absolute bottom-full mb-3 right-0 w-60 bg-white border border-gray-200 rounded-2xl shadow-2xl p-3 space-y-1 z-50 more-menu-panel">
+        <div class="text-xs font-semibold text-gray-400 px-2">التصفح السريع</div>
+        <button class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-gray-700 hover:bg-gray-100 transition-colors" data-nav-target="faq">
+          <span class="flex items-center gap-2"><i class="fas fa-list text-gray-400"></i>الرئيسية والأسئلة</span>
+          <i class="fas fa-chevron-left text-gray-300 text-xs"></i>
+        </button>
+        <button class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-gray-700 hover:bg-gray-100 transition-colors" data-nav-target="calculator">
+          <span class="flex items-center gap-2"><i class="fas fa-calculator text-gray-400"></i>حاسبة الرواتب</span>
+          <i class="fas fa-chevron-left text-gray-300 text-xs"></i>
+        </button>
+        <div class="border-t border-gray-100 my-2"></div>
+        <div class="text-xs font-semibold text-gray-400 px-2">معلومات الموقع</div>
+        <button class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-gray-700 hover:bg-gray-100 transition-colors" data-nav-target="about">
+          <span class="flex items-center gap-2"><i class="fas fa-user-friends text-gray-400"></i>من نحن</span>
+          <i class="fas fa-chevron-left text-gray-300 text-xs"></i>
+        </button>
+        <button class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-gray-700 hover:bg-gray-100 transition-colors" data-nav-target="privacy">
+          <span class="flex items-center gap-2"><i class="fas fa-shield-alt text-gray-400"></i>سياسة الخصوصية</span>
+          <i class="fas fa-chevron-left text-gray-300 text-xs"></i>
+        </button>
+        <button class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-gray-700 hover:bg-gray-100 transition-colors" data-nav-target="terms">
+          <span class="flex items-center gap-2"><i class="fas fa-file-contract text-gray-400"></i>الشروط والأحكام</span>
+          <i class="fas fa-chevron-left text-gray-300 text-xs"></i>
+        </button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -595,6 +821,13 @@
       if (targetKey !== 'calculator') {
         const stickyBar = document.getElementById('stickyBar');
         if (stickyBar) stickyBar.classList.remove('show');
+      }
+
+      const moreMenu = document.getElementById('moreMenu');
+      const moreToggle = document.getElementById('moreMenuToggle');
+      if (moreMenu && moreToggle) {
+        moreMenu.classList.add('hidden');
+        moreToggle.setAttribute('aria-expanded', 'false');
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -803,6 +1036,9 @@
       document.getElementById('levelSection').classList.add('slide-in');
       initializeLevels();
       resetGradeSelection();
+      setTimeout(() => {
+        document.getElementById('levelSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     }
 
     // -------- Levels --------
@@ -833,6 +1069,9 @@
       document.getElementById('gradeSection').style.display = 'block';
       document.getElementById('gradeSection').classList.add('slide-in');
       initializeGrades();
+      setTimeout(() => {
+        document.getElementById('gradeSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     }
 
     // -------- Grades --------
@@ -883,6 +1122,10 @@
         document.getElementById('stickyNetSalary').textContent = formatCurrency(grade.net);
         showStickyBar();
       }, 200);
+
+      setTimeout(() => {
+        document.getElementById('resultsCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     }
 
     function showStickyBar() {
@@ -1001,6 +1244,31 @@ ${url}`;
       document.querySelectorAll('[data-nav-target]').forEach(btn => {
         btn.addEventListener('click', () => showPage(btn.dataset.navTarget));
       });
+
+      const moreMenuToggle = document.getElementById('moreMenuToggle');
+      const moreMenu = document.getElementById('moreMenu');
+      if (moreMenuToggle && moreMenu) {
+        moreMenuToggle.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const willHide = moreMenu.classList.toggle('hidden');
+          moreMenuToggle.setAttribute('aria-expanded', (!willHide).toString());
+        });
+
+        moreMenu.querySelectorAll('[data-nav-target]').forEach(item => {
+          item.addEventListener('click', () => {
+            moreMenu.classList.add('hidden');
+            moreMenuToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+
+        document.addEventListener('click', (event) => {
+          if (moreMenu.classList.contains('hidden')) return;
+          if (moreMenu.contains(event.target)) return;
+          if (moreMenuToggle.contains(event.target)) return;
+          moreMenu.classList.add('hidden');
+          moreMenuToggle.setAttribute('aria-expanded', 'false');
+        });
+      }
 
       // Sticky bar on scroll
       window.addEventListener('scroll', () => {
