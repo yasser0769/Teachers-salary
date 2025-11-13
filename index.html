@@ -61,25 +61,44 @@
     /* ضمان الأرقام بالإنجليزية */
     .latin-nums { font-variant-numeric: tabular-nums; }
 
-    .nav-pill {
-      background-color: rgba(243, 244, 246, 0.8);
-      color: #374151;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      transition: all 0.2s ease;
-    }
-    .nav-pill:hover { background-color: rgba(229, 231, 235, 1); }
-    .nav-pill.active-nav {
-      background-color: #1079e6;
-      color: white;
-      box-shadow: 0 10px 15px -3px rgba(16, 121, 230, 0.3);
-    }
-
     .nav-icon {
       color: #9ca3af;
       transition: color 0.2s ease;
     }
-    .nav-icon.active-nav { color: #1079e6; }
+    .nav-icon.active-nav {
+      color: #1079e6;
+    }
+    .nav-icon.active-nav span {
+      font-weight: 600;
+    }
+
+    .bottom-nav {
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .dark .bottom-nav {
+      background-color: rgba(31, 41, 55, 0.95);
+      border-color: rgba(75, 85, 99, 0.9);
+    }
+
+    .more-menu-panel {
+      backdrop-filter: blur(12px);
+    }
+    .dark .more-menu-panel {
+      background-color: rgba(31, 41, 55, 0.98);
+      border-color: rgb(55, 65, 81);
+      color: rgb(229, 231, 235);
+    }
+    .dark .more-menu-panel button {
+      color: rgb(229, 231, 235) !important;
+    }
+    .dark .more-menu-panel button:hover {
+      background-color: rgba(55, 65, 81, 0.7) !important;
+    }
+    .dark .more-menu-panel i,
+    .dark .more-menu-panel .text-gray-400,
+    .dark .more-menu-panel .text-gray-300 {
+      color: rgb(156, 163, 175) !important;
+    }
 
     /* إخفاء عناصر التحكم الافتراضية من Tumblr */
     .iframe-controls-container,
@@ -108,13 +127,6 @@
               <i class="fas fa-share-alt text-gray-600"></i>
             </button>
           </div>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <button class="nav-pill" data-nav-target="calculator">حاسبة الرواتب</button>
-          <button class="nav-pill" data-nav-target="faq">الرئيسية والأسئلة</button>
-          <button class="nav-pill" data-nav-target="about">من نحن</button>
-          <button class="nav-pill" data-nav-target="privacy">سياسة الخصوصية</button>
-          <button class="nav-pill" data-nav-target="terms">الشروط والأحكام</button>
         </div>
       </div>
     </div>
@@ -504,7 +516,7 @@
   </div>
 
   <!-- Bottom Navigation -->
-  <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2 flex justify-around z-50">
+  <div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-gray-200 p-2 flex justify-around items-center z-50 shadow-lg bottom-nav">
     <button class="flex flex-col items-center p-2 nav-icon" data-nav-target="faq" aria-label="الرئيسية">
       <i class="fas fa-home text-xl mb-1"></i>
       <span class="text-xs">الرئيسية</span>
@@ -513,10 +525,37 @@
       <i class="fas fa-calculator text-xl mb-1"></i>
       <span class="text-xs">الحاسبة</span>
     </button>
-    <button class="flex flex-col items-center p-2 nav-icon" data-nav-target="about" aria-label="من نحن">
-      <i class="fas fa-info-circle text-xl mb-1"></i>
-      <span class="text-xs">من نحن</span>
-    </button>
+    <div class="relative flex flex-col items-center">
+      <button id="moreMenuToggle" class="flex flex-col items-center p-2 nav-icon" aria-haspopup="true" aria-expanded="false" aria-label="المزيد">
+        <i class="fas fa-ellipsis-h text-xl mb-1"></i>
+        <span class="text-xs">المزيد</span>
+      </button>
+      <div id="moreMenu" class="hidden absolute bottom-full mb-3 right-0 w-60 bg-white border border-gray-200 rounded-2xl shadow-2xl p-3 space-y-1 z-50 more-menu-panel">
+        <div class="text-xs font-semibold text-gray-400 px-2">التصفح السريع</div>
+        <button class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-gray-700 hover:bg-gray-100 transition-colors" data-nav-target="faq">
+          <span class="flex items-center gap-2"><i class="fas fa-list text-gray-400"></i>الرئيسية والأسئلة</span>
+          <i class="fas fa-chevron-left text-gray-300 text-xs"></i>
+        </button>
+        <button class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-gray-700 hover:bg-gray-100 transition-colors" data-nav-target="calculator">
+          <span class="flex items-center gap-2"><i class="fas fa-calculator text-gray-400"></i>حاسبة الرواتب</span>
+          <i class="fas fa-chevron-left text-gray-300 text-xs"></i>
+        </button>
+        <div class="border-t border-gray-100 my-2"></div>
+        <div class="text-xs font-semibold text-gray-400 px-2">معلومات الموقع</div>
+        <button class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-gray-700 hover:bg-gray-100 transition-colors" data-nav-target="about">
+          <span class="flex items-center gap-2"><i class="fas fa-user-friends text-gray-400"></i>من نحن</span>
+          <i class="fas fa-chevron-left text-gray-300 text-xs"></i>
+        </button>
+        <button class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-gray-700 hover:bg-gray-100 transition-colors" data-nav-target="privacy">
+          <span class="flex items-center gap-2"><i class="fas fa-shield-alt text-gray-400"></i>سياسة الخصوصية</span>
+          <i class="fas fa-chevron-left text-gray-300 text-xs"></i>
+        </button>
+        <button class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm text-gray-700 hover:bg-gray-100 transition-colors" data-nav-target="terms">
+          <span class="flex items-center gap-2"><i class="fas fa-file-contract text-gray-400"></i>الشروط والأحكام</span>
+          <i class="fas fa-chevron-left text-gray-300 text-xs"></i>
+        </button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -601,6 +640,13 @@
       if (targetKey !== 'calculator') {
         const stickyBar = document.getElementById('stickyBar');
         if (stickyBar) stickyBar.classList.remove('show');
+      }
+
+      const moreMenu = document.getElementById('moreMenu');
+      const moreToggle = document.getElementById('moreMenuToggle');
+      if (moreMenu && moreToggle) {
+        moreMenu.classList.add('hidden');
+        moreToggle.setAttribute('aria-expanded', 'false');
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1017,6 +1063,31 @@ ${url}`;
       document.querySelectorAll('[data-nav-target]').forEach(btn => {
         btn.addEventListener('click', () => showPage(btn.dataset.navTarget));
       });
+
+      const moreMenuToggle = document.getElementById('moreMenuToggle');
+      const moreMenu = document.getElementById('moreMenu');
+      if (moreMenuToggle && moreMenu) {
+        moreMenuToggle.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const willHide = moreMenu.classList.toggle('hidden');
+          moreMenuToggle.setAttribute('aria-expanded', (!willHide).toString());
+        });
+
+        moreMenu.querySelectorAll('[data-nav-target]').forEach(item => {
+          item.addEventListener('click', () => {
+            moreMenu.classList.add('hidden');
+            moreMenuToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+
+        document.addEventListener('click', (event) => {
+          if (moreMenu.classList.contains('hidden')) return;
+          if (moreMenu.contains(event.target)) return;
+          if (moreMenuToggle.contains(event.target)) return;
+          moreMenu.classList.add('hidden');
+          moreMenuToggle.setAttribute('aria-expanded', 'false');
+        });
+      }
 
       // Sticky bar on scroll
       window.addEventListener('scroll', () => {
