@@ -3,7 +3,6 @@
 <head>
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="O9Y34Bg1J6Ln4vp/slf7BA" async></script>
 <link rel="icon" type="image/png" href="https://static.tumblr.com/8cspwwp/K7Kt02vwg/favicon-32x32.png">
-<meta name="google-site-verification" content="EmuAssYNVYuwRrRGphfjXl25VHWLfb8umw5jILnWcWs" />
 <meta name="google-site-verification" content="47wn2Fwtv9isomAet86dH-aDCtmoeDl_zxpzRA0N8WQ" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -52,9 +51,9 @@
       z-index: 50;
       transform: translateY(100%);
       transition: transform 0.3s ease;
-      background-color: #047857;
+      background: linear-gradient(90deg, #0ea5e9, #1079e6);
       color: white;
-      box-shadow: 0 -10px 30px -25px rgba(15, 23, 42, 0.6);
+      box-shadow: 0 -12px 35px -28px rgba(15, 23, 42, 0.7);
     }
     .sticky-bar.show { transform: translateY(0); }
 
@@ -72,15 +71,6 @@
 
     /* ضمان الأرقام بالإنجليزية */
     .latin-nums { font-variant-numeric: tabular-nums; }
-
-    #shareResult,
-    #whatsappShare {
-      transition: transform 0.2s ease;
-    }
-    #shareResult:hover,
-    #whatsappShare:hover {
-      transform: translateY(-1px);
-    }
 
     .nav-icon {
       color: #9ca3af;
@@ -105,12 +95,12 @@
       backdrop-filter: blur(12px);
     }
     .dark .more-menu-panel {
-      background-color: rgba(30, 41, 59, 0.98);
-      border-color: rgba(148, 163, 184, 0.35);
-      color: rgba(226, 232, 240, 0.95);
+      background-color: rgba(31, 41, 55, 0.98);
+      border-color: rgb(55, 65, 81);
+      color: rgb(229, 231, 235);
     }
     .dark .more-menu-panel button {
-      color: rgba(226, 232, 240, 0.95) !important;
+      color: rgb(229, 231, 235) !important;
     }
     .dark .more-menu-panel button:hover {
       background-color: rgba(55, 65, 81, 0.7) !important;
@@ -120,11 +110,6 @@
     .dark .more-menu-panel .text-gray-300 {
       color: rgb(156, 163, 175) !important;
     }
-
-    .dark #shareResult { background-color: rgba(59, 130, 246, 0.85); }
-    .dark #shareResult:hover { background-color: rgba(37, 99, 235, 0.9); }
-    .dark #whatsappShare { background-color: rgba(16, 185, 129, 0.85); }
-    .dark .sticky-bar { background-color: rgba(4, 120, 87, 0.95); box-shadow: none; }
 
     /* إخفاء عناصر التحكم الافتراضية من Tumblr */
     .iframe-controls-container,
@@ -291,56 +276,76 @@
       </div>
 
       <!-- Results -->
-      <div id="resultsCard" class="bg-white rounded-lg shadow-lg p-6 mb-6" style="display:none;">
-        <h3 class="text-2xl font-bold mb-6 text-center">تفاصيل راتبك الشهري</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-blue-50 rounded-lg p-4">
-            <div class="flex items-center justify-between">
-              <span class="text-gray-600">الراتب الأساسي</span>
-              <button class="text-gray-400 hover:text-gray-600" data-tooltip="المبلغ الثابت حسب مستواك ودرجتك">
+      <div id="resultsCard" class="bg-white rounded-2xl shadow-xl p-7 mb-6" style="display:none;">
+        <h3 class="text-2xl font-bold mb-6 text-center text-blue-700">تفاصيل راتبك الشهري</h3>
+        <div class="results-grid">
+          <div class="result-card result-card--primary">
+            <div class="flex items-center gap-3">
+              <div class="result-icon"><i class="fas fa-money-bill-wave"></i></div>
+              <div>
+                <div class="result-label">الراتب الأساسي</div>
+                <p class="result-helper">المبلغ الثابت المعتمد حسب المستوى والدرجة</p>
+              </div>
+              <button type="button" class="ml-auto text-gray-400 hover:text-gray-600" data-tooltip="المبلغ الثابت حسب مستواك ودرجتك">
                 <i class="fas fa-question-circle"></i>
               </button>
             </div>
-            <div id="basicSalary" class="text-2xl font-bold text-blue-600 count-up">0 ريال</div>
+            <div id="basicSalary" class="result-value count-up">0 ريال</div>
           </div>
-          <div class="bg-green-50 rounded-lg p-4">
-            <div class="flex items-center justify-between">
-              <span class="text-gray-600">بدل النقل</span>
-              <button class="text-gray-400 hover:text-gray-600" data-tooltip="بدل شهري ثابت للمساعدة في تكاليف التنقل">
+
+          <div class="result-card result-card--success">
+            <div class="flex items-center gap-3">
+              <div class="result-icon"><i class="fas fa-route"></i></div>
+              <div>
+                <div class="result-label">بدل النقل</div>
+                <p class="result-helper">بدل شهري ثابت لدعم مصاريف التنقل</p>
+              </div>
+              <button type="button" class="ml-auto text-gray-400 hover:text-gray-600" data-tooltip="بدل شهري ثابت للمساعدة في تكاليف التنقل">
                 <i class="fas fa-question-circle"></i>
               </button>
             </div>
-            <div id="transportAllowance" class="text-2xl font-bold text-green-600 count-up">0 ريال</div>
+            <div id="transportAllowance" class="result-value count-up">0 ريال</div>
           </div>
-          <div class="bg-red-50 rounded-lg p-4">
-            <div class="flex items-center justify-between">
-              <span class="text-gray-600">استقطاع التقاعد</span>
-              <button class="text-gray-400 hover:text-gray-600" data-tooltip="نسبة محددة تُخصم للتأمينات الاجتماعية">
+
+          <div class="result-card result-card--danger">
+            <div class="flex items-center gap-3">
+              <div class="result-icon"><i class="fas fa-piggy-bank"></i></div>
+              <div>
+                <div class="result-label">استقطاع التقاعد</div>
+                <p class="result-helper">9% من الراتب الأساسي لصالح التأمينات</p>
+              </div>
+              <button type="button" class="ml-auto text-gray-400 hover:text-gray-600" data-tooltip="نسبة محددة تُخصم للتأمينات الاجتماعية">
                 <i class="fas fa-question-circle"></i>
               </button>
             </div>
-            <div id="retirementDeduction" class="text-2xl font-bold text-red-600 count-up">-0 ريال</div>
+            <div id="retirementDeduction" class="result-value count-up">-0 ريال</div>
           </div>
-          <div class="bg-yellow-50 rounded-lg p-4">
-            <div class="flex items-center justify-between">
-              <span class="text-gray-600">العلاوة السنوية</span>
-              <button class="text-gray-400 hover:text-gray-600" data-tooltip="المبلغ الذي يُضاف لراتبك الأساسي سنوياً">
+
+          <div class="result-card result-card--warning">
+            <div class="flex items-center gap-3">
+              <div class="result-icon"><i class="fas fa-gift"></i></div>
+              <div>
+                <div class="result-label">العلاوة السنوية</div>
+                <p class="result-helper">قيمة الزيادة السنوية المعتمدة لمسارك</p>
+              </div>
+              <button type="button" class="ml-auto text-gray-400 hover:text-gray-600" data-tooltip="المبلغ الذي يُضاف لراتبك الأساسي سنوياً">
                 <i class="fas fa-question-circle"></i>
               </button>
             </div>
-            <div id="annualRaise" class="text-2xl font-bold text-yellow-600 count-up">0 ريال</div>
+            <div id="annualRaise" class="result-value count-up">0 ريال</div>
           </div>
-        </div>
-        <div class="mt-6 bg-gradient-to-r from-green-500 to-green-600 rounded-lg p-6 text-white text-center">
-          <div class="text-lg mb-2">الراتب الصافي الشهري</div>
-          <div id="netSalary" class="text-4xl font-bold count-up">0 ريال</div>
         </div>
 
-        <div class="mt-6 flex flex-col sm:flex-row gap-3">
-          <button id="shareResult" class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors" type="button">
+        <div class="result-highlight">
+          <div class="result-label text-base">الراتب الصافي الشهري</div>
+          <div id="netSalary" class="result-value count-up">0 ريال</div>
+        </div>
+
+        <div class="result-actions">
+          <button id="shareResult" type="button">
             <i class="fas fa-share-alt ml-2"></i> شارك النتيجة
           </button>
-          <button id="whatsappShare" class="flex-1 bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors" type="button">
+          <button id="whatsappShare" type="button">
             <i class="fab fa-whatsapp ml-2"></i> شارك عبر واتساب
           </button>
         </div>
@@ -529,7 +534,7 @@
   </section>
 
   <!-- Sticky Net Salary Bar -->
-  <div id="stickyBar" class="sticky-bar bg-green-600 text-white p-4 shadow-lg">
+  <div id="stickyBar" class="sticky-bar p-4">
     <div class="container mx-auto flex justify-between items-center">
       <div>
         <span class="text-sm opacity-90">الراتب الصافي</span>
