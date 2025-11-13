@@ -3,7 +3,6 @@
 <head>
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="O9Y34Bg1J6Ln4vp/slf7BA" async></script>
 <link rel="icon" type="image/png" href="https://static.tumblr.com/8cspwwp/K7Kt02vwg/favicon-32x32.png">
-<meta name="google-site-verification" content="EmuAssYNVYuwRrRGphfjXl25VHWLfb8umw5jILnWcWs" />
 <meta name="google-site-verification" content="47wn2Fwtv9isomAet86dH-aDCtmoeDl_zxpzRA0N8WQ" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -28,19 +27,6 @@
 
   <style>
     * { font-family: 'IBM Plex Sans Arabic', sans-serif; }
-    :root {
-      --primary-500: #2563eb;
-      --primary-100: #eff6ff;
-      --success-500: #059669;
-      --success-100: #ecfdf5;
-      --warning-500: #f59e0b;
-      --warning-100: #fef3c7;
-      --danger-500: #dc2626;
-      --danger-100: #fee2e2;
-      --slate-700: #334155;
-      --slate-200: #e2e8f0;
-      --surface-50: #f8fafc;
-    }
     .rtl { direction: rtl; text-align: right; }
     .dark { --tw-bg-opacity: 1; background-color: rgb(17 24 39 / var(--tw-bg-opacity)); color: white; }
     .dark .bg-white { background-color: rgb(31 41 55); }
@@ -86,132 +72,6 @@
     /* ضمان الأرقام بالإنجليزية */
     .latin-nums { font-variant-numeric: tabular-nums; }
 
-    .results-grid {
-      display: grid;
-      gap: 1rem;
-    }
-    @media (min-width: 768px) {
-      .results-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-    .result-card {
-      position: relative;
-      background: white;
-      border-radius: 1.25rem;
-      border: 1px solid var(--slate-200);
-      padding: 1.5rem;
-      box-shadow: 0 20px 45px -28px rgba(15, 23, 42, 0.45);
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .result-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 28px 55px -30px rgba(15, 23, 42, 0.55);
-    }
-    .result-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      opacity: 0.12;
-      pointer-events: none;
-    }
-    .result-card--primary { border-top: 4px solid var(--primary-500); }
-    .result-card--primary::after { background: linear-gradient(135deg, var(--primary-500), transparent); }
-    .result-card--success { border-top: 4px solid var(--success-500); }
-    .result-card--success::after { background: linear-gradient(135deg, var(--success-500), transparent); }
-    .result-card--warning { border-top: 4px solid var(--warning-500); }
-    .result-card--warning::after { background: linear-gradient(135deg, var(--warning-500), transparent); }
-    .result-card--danger { border-top: 4px solid var(--danger-500); }
-    .result-card--danger::after { background: linear-gradient(135deg, var(--danger-500), transparent); }
-
-    .result-icon {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 0.85rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      color: white;
-    }
-    .result-card--primary .result-icon { background: var(--primary-500); }
-    .result-card--success .result-icon { background: var(--success-500); }
-    .result-card--warning .result-icon { background: var(--warning-500); }
-    .result-card--danger .result-icon { background: var(--danger-500); }
-
-    .result-label {
-      font-weight: 600;
-      color: var(--slate-700);
-      font-size: 1.05rem;
-    }
-    .result-helper {
-      color: #6b7280;
-      font-size: 0.875rem;
-    }
-    .result-value {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--slate-700);
-    }
-
-    .result-highlight {
-      margin-top: 1.75rem;
-      border-radius: 1.5rem;
-      background: linear-gradient(135deg, #0ea5e9, #1079e6);
-      padding: 2rem;
-      text-align: center;
-      color: white;
-      box-shadow: 0 25px 55px -30px rgba(14, 165, 233, 0.7);
-    }
-    .result-highlight .result-label { color: rgba(255, 255, 255, 0.85); }
-    .result-highlight .result-value {
-      color: white;
-      font-size: 2.5rem;
-    }
-
-    .result-actions {
-      margin-top: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    @media (min-width: 640px) {
-      .result-actions {
-        flex-direction: row;
-      }
-    }
-    .result-actions button {
-      flex: 1;
-      padding: 0.85rem 1.25rem;
-      border-radius: 0.9rem;
-      font-weight: 600;
-      border: 1px solid transparent;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .result-actions button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 32px -25px rgba(15, 23, 42, 0.7);
-    }
-    #shareResult {
-      background: white;
-      color: var(--primary-500);
-      border-color: rgba(37, 99, 235, 0.25);
-    }
-    #shareResult:hover {
-      background: var(--primary-100);
-    }
-    #whatsappShare {
-      background: var(--success-500);
-      color: white;
-    }
-    #whatsappShare:hover {
-      background: #047857;
-    }
-
     .nav-icon {
       color: #9ca3af;
       transition: color 0.2s ease;
@@ -235,12 +95,12 @@
       backdrop-filter: blur(12px);
     }
     .dark .more-menu-panel {
-      background-color: rgba(30, 41, 59, 0.98);
-      border-color: rgba(148, 163, 184, 0.35);
-      color: rgba(226, 232, 240, 0.95);
+      background-color: rgba(31, 41, 55, 0.98);
+      border-color: rgb(55, 65, 81);
+      color: rgb(229, 231, 235);
     }
     .dark .more-menu-panel button {
-      color: rgba(226, 232, 240, 0.95) !important;
+      color: rgb(229, 231, 235) !important;
     }
     .dark .more-menu-panel button:hover {
       background-color: rgba(55, 65, 81, 0.7) !important;
@@ -250,16 +110,6 @@
     .dark .more-menu-panel .text-gray-300 {
       color: rgb(156, 163, 175) !important;
     }
-
-    .dark .result-card { background: rgb(30, 41, 59); border-color: rgba(148, 163, 184, 0.25); box-shadow: none; }
-    .dark .result-card::after { opacity: 0.18; }
-    .dark .result-label, .dark .result-value { color: rgba(226, 232, 240, 0.95); }
-    .dark .result-helper { color: rgba(203, 213, 225, 0.7); }
-    .dark .result-highlight { background: linear-gradient(135deg, rgba(56, 189, 248, 0.85), rgba(59, 130, 246, 0.95)); box-shadow: none; }
-    .dark #shareResult { background: rgba(15, 23, 42, 0.65); color: rgba(191, 219, 254, 0.95); border-color: rgba(96, 165, 250, 0.35); }
-    .dark #shareResult:hover { background: rgba(37, 99, 235, 0.25); }
-    .dark #whatsappShare { background: rgba(5, 150, 105, 0.9); }
-    .dark .sticky-bar { background: linear-gradient(90deg, rgba(14, 165, 233, 0.9), rgba(30, 64, 175, 0.9)); box-shadow: none; }
 
     /* إخفاء عناصر التحكم الافتراضية من Tumblr */
     .iframe-controls-container,
