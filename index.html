@@ -809,6 +809,9 @@
       document.getElementById('levelSection').classList.add('slide-in');
       initializeLevels();
       resetGradeSelection();
+      setTimeout(() => {
+        document.getElementById('levelSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     }
 
     // -------- Levels --------
@@ -839,6 +842,9 @@
       document.getElementById('gradeSection').style.display = 'block';
       document.getElementById('gradeSection').classList.add('slide-in');
       initializeGrades();
+      setTimeout(() => {
+        document.getElementById('gradeSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     }
 
     // -------- Grades --------
@@ -889,6 +895,10 @@
         document.getElementById('stickyNetSalary').textContent = formatCurrency(grade.net);
         showStickyBar();
       }, 200);
+
+      setTimeout(() => {
+        document.getElementById('resultsCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     }
 
     function showStickyBar() {
