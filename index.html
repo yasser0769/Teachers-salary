@@ -875,6 +875,13 @@
       });
     }
 
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
     function selectTrack(trackId) {
       currentTrack = trackId;
       setQueryParam('t', trackId);
@@ -971,6 +978,7 @@
         document.getElementById('netSalary').textContent = formatCurrency(grade.net);
         document.getElementById('stickyNetSalary').textContent = formatCurrency(grade.net);
         showStickyBar();
+        scrollToSection('resultsCard');
       }, 200);
 
       setTimeout(() => {
