@@ -4,6 +4,7 @@
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="O9Y34Bg1J6Ln4vp/slf7BA" async></script>
 <link rel="icon" type="image/png" href="https://static.tumblr.com/8cspwwp/K7Kt02vwg/favicon-32x32.png">
 <meta name="google-site-verification" content="EmuAssYNVYuwRrRGphfjXl25VHWLfb8umw5jILnWcWs" />
+<meta name="google-site-verification" content="47wn2Fwtv9isomAet86dH-aDCtmoeDl_zxpzRA0N8WQ" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>رواتب المعلمين في السعودية - سلم المعلمين الجديد وحاسبة الراتب</title>
@@ -23,10 +24,10 @@
   <!-- Arabic font -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 
   <style>
-    * { font-family: 'Noto Sans Arabic', sans-serif; }
+    * { font-family: 'IBM Plex Sans Arabic', sans-serif; }
     .rtl { direction: rtl; text-align: right; }
     .dark { --tw-bg-opacity: 1; background-color: rgb(17 24 39 / var(--tw-bg-opacity)); color: white; }
     .dark .bg-white { background-color: rgb(31 41 55); }
@@ -80,6 +81,15 @@
       transition: color 0.2s ease;
     }
     .nav-icon.active-nav { color: #1079e6; }
+
+    /* Tumblr overlay removal */
+    .iframe-controls-container,
+    .iframe-controls-overlay,
+    .iframe-controls-background {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900 rtl latin-nums">
@@ -792,6 +802,13 @@
       });
     }
 
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
     function selectTrack(trackId) {
       currentTrack = trackId;
       setQueryParam('t', trackId);
@@ -803,6 +820,7 @@
       document.getElementById('levelSection').classList.add('slide-in');
       initializeLevels();
       resetGradeSelection();
+      scrollToSection('levelSection');
     }
 
     // -------- Levels --------
@@ -833,6 +851,7 @@
       document.getElementById('gradeSection').style.display = 'block';
       document.getElementById('gradeSection').classList.add('slide-in');
       initializeGrades();
+      scrollToSection('gradeSection');
     }
 
     // -------- Grades --------
@@ -882,6 +901,7 @@
         document.getElementById('netSalary').textContent = formatCurrency(grade.net);
         document.getElementById('stickyNetSalary').textContent = formatCurrency(grade.net);
         showStickyBar();
+        scrollToSection('resultsCard');
       }, 200);
     }
 
