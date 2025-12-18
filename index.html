@@ -38,11 +38,11 @@
       --card-bg: #ffffff;
       --text-primary: #0F172A;
       --text-secondary: #64748B;
-      --bottom-nav-height: 76px;
+      --bottom-nav-height: 72px;
       --shadow-soft: 0 18px 45px -30px rgba(15, 23, 42, 0.4);
     }
 
-    body { background-color: var(--bg-soft); color: var(--text-primary); }
+    body { background-color: var(--bg-soft); color: var(--text-primary); padding-bottom: var(--bottom-nav-height); }
 
     .dark { --tw-bg-opacity: 1; background-color: rgb(17 24 39 / var(--tw-bg-opacity)); color: white; }
     .dark .bg-white { background-color: rgb(31 41 55); }
@@ -58,24 +58,6 @@
     @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .count-up { animation: countUp 1s ease-out; }
     @keyframes countUp { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
-
-    :root {
-      --bottom-nav-height: 76px;
-    }
-
-    .sticky-bar {
-      position: fixed;
-      bottom: calc(var(--bottom-nav-height) + 10px);
-      left: 0;
-      right: 0;
-      z-index: 60;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-      background: linear-gradient(90deg, #0ea5e9, #1079e6);
-      color: white;
-      box-shadow: 0 -12px 35px -28px rgba(15, 23, 42, 0.7);
-    }
-    .sticky-bar.show { transform: translateY(0); }
 
     .track-chip { transition: all 0.2s ease; }
     .track-chip.active { background-color: #1079e6; color: white; }
@@ -105,10 +87,15 @@
 
     .bottom-nav {
       transition: background-color 0.2s ease, border-color 0.2s ease;
+      background-color: #ffffff;
+      border-top: 1px solid #E5E7EB;
+      min-height: var(--bottom-nav-height);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
     }
     .dark .bottom-nav {
-      background-color: rgba(31, 41, 55, 0.95);
-      border-color: rgba(75, 85, 99, 0.9);
+      background-color: #ffffff;
+      border-color: #E5E7EB;
     }
 
     .more-menu-panel {
@@ -707,21 +694,8 @@
     </div>
   </section>
 
-  <!-- Sticky Net Salary Bar -->
-  <div id="stickyBar" class="sticky-bar p-4">
-    <div class="container mx-auto flex justify-between items-center">
-      <div>
-        <span class="text-sm opacity-90">الراتب الصافي</span>
-        <div id="stickyNetSalary" class="text-xl font-bold">0 ريال</div>
-      </div>
-      <button id="backToTop" class="bg-white bg-opacity-20 rounded-full p-2" aria-label="أعلى الصفحة">
-        <i class="fas fa-arrow-up"></i>
-      </button>
-    </div>
-  </div>
-
   <!-- Bottom Navigation -->
-  <div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-gray-200 p-2 flex justify-around items-center z-50 shadow-lg bottom-nav">
+  <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2 flex justify-around items-center z-50 shadow-lg bottom-nav">
     <button class="flex flex-col items-center p-2 nav-icon" data-nav-target="faq" aria-label="الرئيسية">
       <i class="fas fa-home text-xl mb-1"></i>
       <span class="text-xs">الرئيسية</span>
@@ -841,11 +815,6 @@
         btn.classList.toggle('active-nav', isActive);
         btn.setAttribute('aria-current', isActive ? 'page' : 'false');
       });
-
-      if (targetKey !== 'calculator') {
-        const stickyBar = document.getElementById('stickyBar');
-        if (stickyBar) stickyBar.classList.remove('show');
-      }
 
       const moreMenu = document.getElementById('moreMenu');
       const moreToggle = document.getElementById('moreMenuToggle');
@@ -1155,8 +1124,6 @@
         document.getElementById('netSalary').textContent = formatCurrency(grade.net);
         document.getElementById('earningsTotal').textContent = formatCurrency(earningsTotal);
         document.getElementById('deductionsTotal').textContent = '-' + formatCurrency(deductionsTotal);
-        document.getElementById('stickyNetSalary').textContent = formatCurrency(grade.net);
-        showStickyBar();
         scrollToSection('resultsCard');
       }, 200);
 
@@ -1165,18 +1132,12 @@
       }, 100);
     }
 
-    function showStickyBar() {
-      const stickyBar = document.getElementById('stickyBar');
-      stickyBar.classList.add('show');
-    }
-
     function resetLevelSelection() {
       currentLevel = null; currentGrade = null;
       removeQueryParam('l'); removeQueryParam('g');
       document.getElementById('levelSection').style.display = 'none';
       document.getElementById('gradeSection').style.display = 'none';
       document.getElementById('resultsCard').style.display = 'none';
-      document.getElementById('stickyBar').classList.remove('show');
     }
 
     function resetGradeSelection() {
@@ -1184,7 +1145,6 @@
       removeQueryParam('g');
       document.getElementById('gradeSection').style.display = 'none';
       document.getElementById('resultsCard').style.display = 'none';
-      document.getElementById('stickyBar').classList.remove('show');
     }
 
     // -------- Share --------
@@ -1275,9 +1235,6 @@ ${url}`;
       const whatsappShareBtn = document.getElementById('whatsappShare');
       if (whatsappShareBtn) whatsappShareBtn.addEventListener('click', shareWhatsApp);
 
-      const backToTopBtn = document.getElementById('backToTop');
-      if (backToTopBtn) backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
       document.querySelectorAll('[data-nav-target]').forEach(btn => {
         btn.addEventListener('click', () => showPage(btn.dataset.navTarget));
       });
@@ -1306,15 +1263,6 @@ ${url}`;
           moreMenuToggle.setAttribute('aria-expanded', 'false');
         });
       }
-
-      // Sticky bar on scroll
-      window.addEventListener('scroll', () => {
-        const stickyBar = document.getElementById('stickyBar');
-        if (currentPage === 'calculator' && document.getElementById('resultsCard').style.display !== 'none') {
-          if (window.scrollY > 200) stickyBar.classList.add('show');
-          else stickyBar.classList.remove('show');
-        }
-      });
 
       // Simple tooltips
       document.addEventListener('click', (e) => {
