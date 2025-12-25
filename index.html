@@ -196,24 +196,6 @@
       font-weight: 800;
       margin-bottom: 12px;
     }
-    .net-breakdown {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
-      margin-top: 6px;
-    }
-    .net-breakdown__item {
-      background: rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
-      padding: 10px 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-    }
-    .net-caption { color: rgba(255,255,255,0.9); font-size: 0.95rem; }
-    .net-amount { font-size: 1.05rem; }
-
     .cards-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -465,16 +447,6 @@
             </div>
           </div>
           <div id="netSalary" class="net-value count-up">0 ريال</div>
-          <div class="net-breakdown">
-            <div class="net-breakdown__item">
-              <span class="net-caption">إجمالي الاستحقاقات</span>
-              <span id="earningsTotal" class="net-amount">0 ريال</span>
-            </div>
-            <div class="net-breakdown__item">
-              <span class="net-caption">إجمالي الاستقطاعات</span>
-              <span id="deductionsTotal" class="net-amount">0 ريال</span>
-            </div>
-          </div>
         </div>
 
         <div class="cards-grid">
@@ -1175,9 +1147,6 @@
       const grade = level.grades.find(g => g.grade === currentGrade);
       if (!grade) return;
 
-      const earningsTotal = grade.basic + grade.transport + level.annual_raise;
-      const deductionsTotal = grade.retirement;
-
       document.getElementById('resultsCard').style.display = 'block';
       document.getElementById('resultsCard').classList.add('slide-in');
 
@@ -1187,8 +1156,6 @@
         document.getElementById('retirementDeduction').textContent = '-' + formatCurrency(grade.retirement);
         document.getElementById('annualRaise').textContent = formatCurrency(level.annual_raise);
         document.getElementById('netSalary').textContent = formatCurrency(grade.net);
-        document.getElementById('earningsTotal').textContent = formatCurrency(earningsTotal);
-        document.getElementById('deductionsTotal').textContent = '-' + formatCurrency(deductionsTotal);
         scrollToSection('resultsCard');
       }, 200);
 
